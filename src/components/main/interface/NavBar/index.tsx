@@ -1,6 +1,6 @@
-import AddIcon from './AddIcon'
-import SettingsIcon from './SettingsIcon'
-import ThemeIcon from './ThemeIcon'
+import AddIcon from './features/AddIcon'
+import SettingsIcon from './features/SettingsIcon'
+import ThemeIcon from './features/ThemeIcon'
 
 const NavBar = () => {
   return (

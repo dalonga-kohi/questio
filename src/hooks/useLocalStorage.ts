@@ -1,4 +1,4 @@
-export const localStorage = (key: string, initialValue: string): string => {
+export const useLocalStorage = (key: string, initialValue: string): string => {
   try {
     const item = window.localStorage.getItem(key)
     if (item) {

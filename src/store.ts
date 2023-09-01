@@ -1,13 +1,13 @@
 import { combineReducers } from 'redux'
 import { configureStore } from '@reduxjs/toolkit'
-import AppSlice from './App/AppSlice'
+import NavBarSlice from './components/main/interface/NavBar/NavBarSlice'
 import {
   useSelector as useReduxSelector,
   TypedUseSelectorHook,
 } from 'react-redux'
 
 const rootReducer = combineReducers({
-  app: AppSlice,
+  nav: NavBarSlice,
 })
 
 const Store = configureStore({
