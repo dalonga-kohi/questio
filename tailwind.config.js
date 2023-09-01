@@ -10,11 +10,8 @@ module.exports = {
         },
         white: {
           DEFAULT: 'white',
-          light: '#C9C9C9'
-        }
-      },
-      fontFamily: {
-        DEFAULT: ['Lato'],
+          light: '#C9C9C9',
+        },
       },
     },
   },

@@ -1,9 +1,10 @@
 import { PropsWithChildren } from 'react'
+import NavBar from '../components/main/interface/NavBar'
 
 const MainLayout = ({ children }: PropsWithChildren) => {
   return (
     <>
-      <nav></nav>
+      <NavBar />
       <main>{children}</main>
     </>
   )
