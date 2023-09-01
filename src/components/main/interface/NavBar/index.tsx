@@ -1,5 +1,5 @@
-import AddIcon from "./AddIcon"
-import SettingsIcon from "./SettingsIcon"
+import AddIcon from './AddIcon'
+import SettingsIcon from './SettingsIcon'
 
 const NavBar = () => {
   return (

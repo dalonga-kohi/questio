@@ -1,7 +1,5 @@
 const AddIcon = () => {
-    return (
-        <>+</>
-    )
+  return <>+</>
 }
 
 export default AddIcon

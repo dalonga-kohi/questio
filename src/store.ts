@@ -1,13 +1,19 @@
 import { combineReducers } from 'redux'
-import AppReducer from './App/AppSlice'
 import { configureStore } from '@reduxjs/toolkit'
+import AppSlice from './App/AppSlice'
+import {
+  useSelector as useReduxSelector,
+  TypedUseSelectorHook,
+} from 'react-redux'
 
 const rootReducer = combineReducers({
-  AppSlice: AppReducer,
+  app: AppSlice,
 })
 
 const Store = configureStore({
   reducer: rootReducer,
 })
+export type RootState = ReturnType<typeof rootReducer>
+export const useSelector: TypedUseSelectorHook<RootState> = useReduxSelector
 
 export default Store

@@ -1,7 +1,5 @@
 const SettingsIcon = () => {
-    return (
-        <>S</>
-    )
+  return <>S</>
 }
 
 export default SettingsIcon
