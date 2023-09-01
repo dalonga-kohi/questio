@@ -1,9 +1,12 @@
-import useDarkMode from '../hooks/useDarkMode'
+import { useDispatch } from 'react-redux'
 import MainPage from '../pages/MainPage'
 import './index.css'
+import { toggleDarkMode } from './AppSlice'
 
 function App() {
-  useDarkMode()
+  const dispatch = useDispatch()
+  dispatch(toggleDarkMode())
+  dispatch(toggleDarkMode())
   return (
     <>
       <MainPage />
