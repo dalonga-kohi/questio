@@ -1,5 +1,5 @@
 const CACHE_NAME = 'pwa-questio'
-const urlsToCache = ['/', '/completed']
+const urlsToCache = ['/', ]
 
 // Install a service worker
 self.addEventListener('install', (event) => {
