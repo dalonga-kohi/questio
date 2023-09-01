@@ -4,11 +4,13 @@ import ThemeIcon from './ThemeIcon'
 
 const NavBar = () => {
   return (
-    <nav className="px-6 py-8 flex items-center justify-between">
-      <h1 className="text-3xl font-black text-blue-400">QUEST.IO</h1>
-      <div>
+    <nav className="px-2 md:px-6 py-4 flex items-center justify-between">
+      <h1 className="text-3xl font-black dark:text-lime-100 text-slate-900">
+        QUEST.IO
+      </h1>
+      <div className="text-2xl text-slate-700 dark:text-white-light">
         <AddIcon />
-        <ThemeIcon/>
+        <ThemeIcon />
         <SettingsIcon />
       </div>
     </nav>

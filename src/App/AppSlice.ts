@@ -19,7 +19,7 @@ const AppSlice = createSlice({
       if (state.isDark === 'true') {
         state.isDark = 'false'
         bodyClass.remove(className)
-      } else if(state.isDark === 'false'){
+      } else if (state.isDark === 'false') {
         state.isDark = 'true'
         bodyClass.add(className)
       }
