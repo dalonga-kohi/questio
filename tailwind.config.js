@@ -5,14 +5,16 @@ module.exports = {
     extend: {
       colors: {
         black: {
-          light: 'gray',
-          DEFAULT: 'black',
+          light: '#1A222A',
+          DEFAULT: '#0E1318',
         },
-        white: '#C5C6C7',
+        white: {
+          DEFAULT: 'white',
+          light: '#C9C9C9'
+        }
       },
       fontFamily: {
-        display: ['Montserrat'],
-        body: ['Roboto'],
+        DEFAULT: ['Lato'],
       },
     },
   },
