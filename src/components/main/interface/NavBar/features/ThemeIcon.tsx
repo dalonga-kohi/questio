@@ -22,7 +22,7 @@ const ThemeIcon = () => {
       if (dark == 'true') bodyClass.remove(className)
       else bodyClass.add(className)
     }
-  }, [bodyClass, dark, dispatch, storage])
+  }, [])
 
   const modeToggleHandler = () => {
     dispatch(toggleDarkMode())
