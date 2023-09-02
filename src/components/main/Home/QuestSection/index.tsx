@@ -1,7 +1,5 @@
 const QuestSection = () => {
-    return (
-        <></>
-    )
+  return <></>
 }
 
 export default QuestSection

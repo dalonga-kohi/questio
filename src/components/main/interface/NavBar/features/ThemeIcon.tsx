@@ -37,7 +37,10 @@ const ThemeIcon = () => {
   }
 
   return (
-    <button className="md:mx-5 mx-3 w-8 dark:text-yellow-200 group relative" onClick={modeToggleHandler}>
+    <button
+      className="md:mx-5 mx-3 w-8 dark:text-yellow-200 group relative"
+      onClick={modeToggleHandler}
+    >
       <FontAwesomeIcon icon={dark === 'false' ? faMoon : faSun} />
       <Tooltip>Change Theme</Tooltip>
     </button>
