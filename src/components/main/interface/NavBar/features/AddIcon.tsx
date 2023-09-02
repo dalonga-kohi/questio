@@ -5,7 +5,10 @@ import Tooltip from './Tooltip'
 const AddIcon = () => {
   return (
     <button className="group relative">
-      <FontAwesomeIcon className="dark:text-accent text-green-500" icon={faCirclePlus} />
+      <FontAwesomeIcon
+        className="dark:text-accent text-green-500"
+        icon={faCirclePlus}
+      />
       <Tooltip>New Quest</Tooltip>
     </button>
   )
