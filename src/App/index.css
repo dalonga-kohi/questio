@@ -4,17 +4,36 @@
 
 @layer base {
   body {
-    background-color: #e6e6e6;
     margin: 0;
     padding: 0;
-    color: #060709;
+    @apply text-black-darker bg-white;
     font-family: 'Lato';
-    @apply transition-colors;
-    @apply duration-300;
   }
   .dark {
-    background-color: #060709;
+    @apply text-black-darker;
     color: white;
+  }
+  h2 {
+    @apply font-extrabold text-2xl md:text-3xl;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #7f7f7f #ffffff00;
+  }
+
+  *::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #ffffff00;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #7f7f7f;
+    border-radius: 10px;
+    border: 3px solid #ffffff00;
   }
 }
 @layer components {
@@ -22,5 +41,8 @@
     @apply absolute w-auto p-2 m-2 min-w-max -left-10 top-6
     rounded-md shadow-md text-white bg-black-light
     text-sm font-bold transition-all duration-100 scale-0 origin-left;
+  }
+  .link {
+    @apply underline dark:text-green-500 font-bold text-green-600;
   }
 }
