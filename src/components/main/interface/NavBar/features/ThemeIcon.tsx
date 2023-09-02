@@ -8,6 +8,7 @@ import {
   useLocalStorage,
 } from '../../../../../hooks/useLocalStorage'
 import { useEffect } from 'react'
+import Tooltip from './Tooltip'
 
 const ThemeIcon = () => {
   const dispatch = useDispatch()
@@ -36,8 +37,9 @@ const ThemeIcon = () => {
   }
 
   return (
-    <button className="md:mx-6 mx-4 dark:text-yellow-200" onClick={modeToggleHandler}>
+    <button className="md:mx-5 mx-3 w-8 dark:text-yellow-200 group relative" onClick={modeToggleHandler}>
       <FontAwesomeIcon icon={dark === 'false' ? faMoon : faSun} />
+      <Tooltip>Change Theme</Tooltip>
     </button>
   )
 }
