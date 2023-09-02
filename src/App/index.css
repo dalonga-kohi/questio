@@ -7,13 +7,13 @@
     background-color: #e6e6e6;
     margin: 0;
     padding: 0;
-    color: #060709;
+    @apply text-black-darker;
     font-family: 'Lato';
     @apply transition-colors;
     @apply duration-300;
   }
   .dark {
-    background-color: #060709;
+    @apply text-black-darker;
     color: white;
   }
 
