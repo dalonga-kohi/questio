@@ -4,7 +4,7 @@ import { faCirclePlus } from '@fortawesome/free-solid-svg-icons'
 const AddIcon = () => {
   return (
     <button>
-      <FontAwesomeIcon className="" icon={faCirclePlus} />
+      <FontAwesomeIcon className="dark:text-accent text-green-500" icon={faCirclePlus} />
     </button>
   )
 }

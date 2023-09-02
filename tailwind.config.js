@@ -13,6 +13,7 @@ module.exports = {
           DEFAULT: 'white',
           light: '#C9C9C9',
         },
+        accent: "#80ED99"
       },
     },
   },

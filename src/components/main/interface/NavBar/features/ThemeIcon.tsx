@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux'
 import { toggleDarkMode } from './../NavBarSlice'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMoon } from '@fortawesome/free-solid-svg-icons'
+import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
 import { useSelector } from '../../../../../store'
 import {
   setLocalStorage,
@@ -36,8 +36,8 @@ const ThemeIcon = () => {
   }
 
   return (
-    <button onClick={modeToggleHandler}>
-      <FontAwesomeIcon className="mx-6" icon={faMoon} />
+    <button className="md:mx-6 mx-4 dark:text-yellow-200" onClick={modeToggleHandler}>
+      <FontAwesomeIcon icon={dark === 'false' ? faMoon : faSun} />
     </button>
   )
 }

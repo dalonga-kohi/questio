@@ -9,6 +9,8 @@
     padding: 0;
     color: #060709;
     font-family: 'Lato';
+    @apply transition-colors;
+    @apply duration-300;
   }
   .dark {
     background-color: #060709;
