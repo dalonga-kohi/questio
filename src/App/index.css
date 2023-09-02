@@ -16,6 +16,9 @@
     @apply text-black-darker;
     color: white;
   }
+  h2 {
+    @apply font-extrabold text-2xl
+  }
 
   * {
     scrollbar-width: thin;
