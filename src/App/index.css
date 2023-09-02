@@ -42,4 +42,7 @@
     rounded-md shadow-md text-white bg-black-light
     text-sm font-bold transition-all duration-100 scale-0 origin-left;
   }
+  .link {
+    @apply underline dark:text-green-500 font-bold text-green-600;
+  }
 }

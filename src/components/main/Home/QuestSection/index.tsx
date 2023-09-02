@@ -5,7 +5,7 @@ interface IQuestProps {
   title: string
 }
 
-const QuestSection = ({category, title}: IQuestProps) => {
+const QuestSection = ({title}: IQuestProps) => {
   return (
     <section>
       <h2>{title}</h2>
