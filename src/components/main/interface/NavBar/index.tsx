@@ -4,7 +4,7 @@ import ThemeIcon from './features/ThemeIcon'
 
 const NavBar = () => {
   return (
-    <nav className="px-4 md:px-6 py-4 flex items-center justify-between">
+    <nav className="px-4 md:px-6 py-6 flex items-center justify-between">
       <h1 className="text-3xl font-black dark:text-accent text-green-500">
         QUEST.IO
       </h1>
