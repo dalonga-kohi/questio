@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom'
 
-type Category = 'latest' | 'popular' | 'recommended' | ''
+type Category = 'latest' | 'popular' | 'recommended' | 'beginner' | 'advanced'
 
 interface IQuestProps {
   category: Category
@@ -9,7 +9,7 @@ interface IQuestProps {
 
 const QuestSection = ({ category, title }: IQuestProps) => {
   return (
-    <section className="flex w-full justify-between items-center">
+    <section className="flex w-full justify-between items-center my-6">
       <h2>{title}</h2>
       <NavLink
         to={`/category/${category}`}
