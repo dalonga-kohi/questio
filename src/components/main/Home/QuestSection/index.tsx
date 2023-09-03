@@ -13,9 +13,9 @@ const QuestSection = ({ category, title }: IQuestProps) => {
       <h2>{title}</h2>
       <NavLink
         to={`/category/${category}`}
-        className="text-white-light font-bold text-lg"
+        className="dark:text-white-light text-lg link"
       >
-        See More
+        See All
       </NavLink>
     </section>
   )
