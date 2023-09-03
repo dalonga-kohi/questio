@@ -8,13 +8,14 @@ interface IQuestProps {
 }
 
 const QuestSection = ({ category, title }: IQuestProps) => {
+  const link = `/category/${category}`
+
   return (
     <section className="flex w-full justify-between items-center my-6">
-      <h2>{title}</h2>
-      <NavLink
-        to={`/category/${category}`}
-        className="dark:text-white-light text-lg link"
-      >
+      <h2>
+        <NavLink to={link}>{title}</NavLink>
+      </h2>
+      <NavLink to={link} className="dark:text-white-light text-lg link">
         See All
       </NavLink>
     </section>
