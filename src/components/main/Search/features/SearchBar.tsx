@@ -1,11 +1,9 @@
 interface IProps {
-    value: string
+  value: string
 }
 
-const SearchBar= ({value}: IProps) => {
-    return (
-        {value}
-    )
+const SearchBar = ({ value }: IProps) => {
+  return { value }
 }
 
 export default SearchBar
