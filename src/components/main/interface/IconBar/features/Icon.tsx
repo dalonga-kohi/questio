@@ -20,8 +20,8 @@ const Icon = ({ icon, link, caption }: IIconProps) => {
     >
       <FontAwesomeIcon
         icon={icon}
-        className={`text-2xl dark:text-white ${
-          isMatching ? 'text-gray-500 dark:text-gray-500' : ''
+        className={`text-2xl ${
+          isMatching ? 'text-gray-500' : 'dark:text-white'
         }`}
       />
       <div className={`font-bold ${isMatching ? 'text-gray-500' : ''}`}>
