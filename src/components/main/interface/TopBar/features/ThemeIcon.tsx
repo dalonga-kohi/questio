@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux'
-import { toggleDarkMode } from './../NavBarSlice'
+import { toggleDarkMode } from '../TopBarSlice'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
 import { useSelector } from '../../../../../store'
