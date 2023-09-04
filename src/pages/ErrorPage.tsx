@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 const ErrorPage = () => {
   return (
     <MainLayout>
-      <div className="flex flex-col w-full justify-start pt-20 text-center items-center h-screen">
+      <div className="flex flex-col w-full justify-start pt-10 text-center items-center">
         <h2>Oops!</h2>
         <p className="mt-2 mb-4">Sorry, page you looking for does not exist.</p>
         <NavLink to="/" className="link">

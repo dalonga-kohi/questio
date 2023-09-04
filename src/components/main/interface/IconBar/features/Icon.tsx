@@ -21,13 +21,8 @@ const Icon = ({ icon, link, caption }: IIconProps) => {
       ${isMatching ? 'dark:text-white-light text-slate-700' : 'text-gray-500'}
       `}
     >
-      <FontAwesomeIcon
-        icon={icon}
-        className="text-2xl"
-      />
-      <div className="font-bold">
-        {caption}
-      </div>
+      <FontAwesomeIcon icon={icon} className="text-2xl" />
+      <div className="font-bold">{caption}</div>
     </NavLink>
   )
 }
