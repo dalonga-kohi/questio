@@ -1,7 +1,7 @@
 import MainLayout from '../layouts/MainLayout'
 import { NavLink } from 'react-router-dom'
 
-export default function ErrorPage() {
+const ErrorPage = () => {
   return (
     <MainLayout>
       <div className="flex flex-col w-full justify-start pt-20 text-center items-center h-screen">
@@ -14,3 +14,5 @@ export default function ErrorPage() {
     </MainLayout>
   )
 }
+
+export default ErrorPage
