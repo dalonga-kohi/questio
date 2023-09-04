@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux'
-import { toggleDarkMode } from './../NavBarSlice'
+import { toggleDarkMode } from '../TopBarSlice'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
 import { useSelector } from '../../../../../store'
@@ -7,7 +7,7 @@ import {
   setLocalStorage,
   useLocalStorage,
 } from '../../../../../hooks/useLocalStorage'
-import { useEffect } from 'react'
+import useDidMount from '../../../../../hooks/useDidMount'
 import Tooltip from './Tooltip'
 
 const ThemeIcon = () => {
@@ -17,13 +17,13 @@ const ThemeIcon = () => {
   const dark = useSelector((state) => state.nav.isDark)
   const storage = useLocalStorage('dark-mode', 'true')
 
-  useEffect(() => {
+  useDidMount(() => {
     if (dark != storage) {
       dispatch(toggleDarkMode())
       if (dark == 'true') bodyClass.remove(className)
       else bodyClass.add(className)
     }
-  }, [])
+  })
 
   const modeToggleHandler = () => {
     dispatch(toggleDarkMode())

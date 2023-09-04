@@ -7,7 +7,7 @@ interface State {
   isDark: string
 }
 
-const NavBarSlice = createSlice({
+const TopBarSlice = createSlice({
   name: 'app',
   initialState,
   reducers: {
@@ -18,6 +18,6 @@ const NavBarSlice = createSlice({
   },
 })
 
-export const { toggleDarkMode } = NavBarSlice.actions
+export const { toggleDarkMode } = TopBarSlice.actions
 
-export default NavBarSlice.reducer
+export default TopBarSlice.reducer

@@ -1,5 +1,5 @@
 import { PropsWithChildren } from 'react'
-import NavBar from '../components/main/interface/NavBar'
+import NavBar from '../components/main/interface/TopBar'
 import IconBar from '../components/main/interface/IconBar'
 
 const MainLayout = ({ children }: PropsWithChildren) => {

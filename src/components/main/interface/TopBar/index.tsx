@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom'
 
 const NavBar = () => {
   return (
-    <nav className="px-4 md:px-6 py-6 flex items-center justify-between dark:bg-black-darker bg-white">
+    <aside className="px-4 md:px-6 py-6 flex items-center justify-between dark:bg-black-darker bg-white">
       <h1 className="text-3xl font-black dark:text-accent text-green-500">
         <NavLink to="/">QUEST.IO</NavLink>
       </h1>
@@ -14,7 +14,7 @@ const NavBar = () => {
         <ThemeIcon />
         <SettingsIcon />
       </div>
-    </nav>
+    </aside>
   )
 }
 
