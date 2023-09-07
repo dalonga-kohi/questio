@@ -3,7 +3,7 @@ import SettingsIcon from './features/SettingsIcon'
 import ThemeIcon from './features/ThemeIcon'
 import { NavLink } from 'react-router-dom'
 
-const NavBar = () => {
+const TopBar = () => {
   return (
     <aside className="px-4 md:px-6 py-6 flex items-center justify-between dark:bg-black-darker bg-white">
       <h1 className="text-3xl font-black dark:text-accent text-green-500">
@@ -18,4 +18,4 @@ const NavBar = () => {
   )
 }
 
-export default NavBar
+export default TopBar
