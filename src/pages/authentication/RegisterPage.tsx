@@ -1,5 +1,5 @@
-import Home from '../components/main/Home'
-import MainLayout from '../layouts/MainLayout'
+import Home from '../../components/main/Home'
+import MainLayout from '../../layouts/MainLayout'
 
 const RegisterPage = () => {
   return (
