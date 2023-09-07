@@ -16,7 +16,9 @@
   h2 {
     @apply font-extrabold text-2xl md:text-3xl;
   }
-
+  input {
+    font-family: 'Lato';
+  }
   * {
     scrollbar-width: thin;
     scrollbar-color: #7f7f7f #ffffff00;

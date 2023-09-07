@@ -7,7 +7,7 @@ interface State {
   val: string
 }
 interface Action {
-  payload: {val: string}
+  payload: { val: string }
 }
 
 const SearchSlice = createSlice({
