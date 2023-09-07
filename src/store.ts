@@ -5,9 +5,11 @@ import {
   useSelector as useReduxSelector,
   TypedUseSelectorHook,
 } from 'react-redux'
+import SearchSlice from './components/main/Search/SearchSlice'
 
 const rootReducer = combineReducers({
   nav: TopBarSlice,
+  search: SearchSlice,
 })
 
 const Store = configureStore({
