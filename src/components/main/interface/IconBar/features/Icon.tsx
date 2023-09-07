@@ -15,18 +15,14 @@ const Icon = ({ icon, link, caption }: IIconProps) => {
   return (
     <NavLink
       to={link}
-      className="flex flex-col dark:text-white-light text-slate-700 justify-start items-center
-      hover:bg-gray-400 dark:hover:bg-black rounded-md w-1/4 py-2 transition-colors"
+      className={`
+      flex flex-col justify-start items-center
+      hover:bg-gray-400 dark:hover:bg-black rounded-md w-1/4 py-2 transition-colors
+      ${isMatching ? 'dark:text-white-light text-slate-700' : 'text-gray-500'}
+      `}
     >
-      <FontAwesomeIcon
-        icon={icon}
-        className={`text-2xl ${
-          isMatching ? 'text-gray-500' : 'dark:text-white'
-        }`}
-      />
-      <div className={`font-bold ${isMatching ? 'text-gray-500' : ''}`}>
-        {caption}
-      </div>
+      <FontAwesomeIcon icon={icon} className="text-2xl" />
+      <div className="font-bold">{caption}</div>
     </NavLink>
   )
 }

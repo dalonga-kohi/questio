@@ -1,10 +1,10 @@
-import Home from '../components/main/Home'
+import Search from '../components/main/Search'
 import MainLayout from '../layouts/MainLayout'
 
 const SearchPage = () => {
   return (
     <MainLayout>
-      <Home />
+      <Search />
     </MainLayout>
   )
 }

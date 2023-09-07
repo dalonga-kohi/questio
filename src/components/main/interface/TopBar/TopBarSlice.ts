@@ -8,7 +8,7 @@ interface State {
 }
 
 const TopBarSlice = createSlice({
-  name: 'app',
+  name: 'nav',
   initialState,
   reducers: {
     toggleDarkMode: (state: State) => {
