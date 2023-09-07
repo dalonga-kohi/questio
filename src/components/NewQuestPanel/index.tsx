@@ -1,9 +1,9 @@
 const NewQuestPanel = () => {
-    return (
-        <>
-        YES
-        </>
-    )
+  return (
+    <div className="flex justify-center items-center h-full">
+      CENTER
+    </div>
+  )
 }
 
 export default NewQuestPanel
