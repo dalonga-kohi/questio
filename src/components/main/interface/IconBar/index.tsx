@@ -1,6 +1,6 @@
 import Icon from './features/Icon'
 import {
-  faBookBookmark,
+  faGear,
   faChartColumn,
   faHome,
   faMagnifyingGlass,
@@ -12,7 +12,7 @@ const IconBar = () => {
       <Icon link="/" caption="Home" icon={faHome} />
       <Icon link="/search" caption="Search" icon={faMagnifyingGlass} />
       <Icon link="/tracker" caption="Tracker" icon={faChartColumn} />
-      <Icon link="/lib" caption="Library" icon={faBookBookmark} />
+      <Icon link="/settings" caption="Settings" icon={faGear} />
     </nav>
   )
 }
