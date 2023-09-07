@@ -1,5 +1,5 @@
 import AddIcon from './features/AddIcon'
-import SettingsIcon from './features/SettingsIcon'
+import FriendIcon from './features/FriendIcon'
 import ThemeIcon from './features/ThemeIcon'
 import { NavLink } from 'react-router-dom'
 
@@ -12,7 +12,7 @@ const TopBar = () => {
       <div className="text-2xl text-slate-700 dark:text-white-light">
         <AddIcon />
         <ThemeIcon />
-        <SettingsIcon />
+        <FriendIcon />
       </div>
     </aside>
   )
