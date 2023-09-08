@@ -1,10 +1,7 @@
-import MainLayout from '../layouts/MainLayout'
+import MainLayout from "../layouts/MainLayout"
 
 const SettingsPage = () => {
-  return (
-    <MainLayout>
-    </MainLayout>
-  )
+  return <MainLayout></MainLayout>
 }
 
 export default SettingsPage
