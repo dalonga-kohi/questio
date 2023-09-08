@@ -2,15 +2,15 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   isDark: 'false',
-  historyPath: '/'
+  historyPath: '/',
 }
 interface State {
-  isDark: string,
+  isDark: string
   historyPath: string
 }
 
 interface Action {
-  payload: {path: string}
+  payload: { path: string }
 }
 
 const TopBarSlice = createSlice({
@@ -23,7 +23,7 @@ const TopBarSlice = createSlice({
     },
     addRoutingHistory: (state: State, action: Action) => {
       state.historyPath = action.payload.path
-    }
+    },
   },
 })
 

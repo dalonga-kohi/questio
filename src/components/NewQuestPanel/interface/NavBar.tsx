@@ -4,7 +4,7 @@ import { faCaretLeft } from '@fortawesome/free-solid-svg-icons'
 import { useSelector } from '../../../store'
 
 const NavBar = () => {
-  const target = useSelector(state => state.nav.historyPath)
+  const target = useSelector((state) => state.nav.historyPath)
 
   return (
     <nav className="px-4 md:px-6 py-6 flex absolute w-full items-center justify-between dark:bg-black-darker bg-white">

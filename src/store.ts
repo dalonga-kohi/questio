@@ -6,10 +6,12 @@ import {
   TypedUseSelectorHook,
 } from 'react-redux'
 import SearchSlice from './components/main/Search/SearchSlice'
+import QuestPanelSlice from './components/NewQuestPanel/QuestPanelSlice'
 
 const rootReducer = combineReducers({
   nav: TopBarSlice,
   search: SearchSlice,
+  questPanel: QuestPanelSlice
 })
 
 const Store = configureStore({

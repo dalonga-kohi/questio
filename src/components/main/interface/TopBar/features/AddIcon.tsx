@@ -10,11 +10,10 @@ const AddIcon = () => {
   const dispatch = useDispatch()
 
   const clickHandler = () => {
-    dispatch(addRoutingHistory({path: location.pathname}))
+    dispatch(addRoutingHistory({ path: location.pathname }))
   }
   return (
-    <NavLink to="/new" className="group relative"
-    onClick={clickHandler}>
+    <NavLink to="/new" className="group relative" onClick={clickHandler}>
       <FontAwesomeIcon
         className="dark:text-accent text-green-500"
         icon={faCirclePlus}
