@@ -1,5 +1,5 @@
-import Editor from "./features/Editor"
-import Preview from "./features/Preview"
+import Editor from './features/Editor'
+import Preview from './features/Preview'
 
 const NewQuestPanel = () => {
   return (

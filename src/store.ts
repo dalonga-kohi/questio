@@ -11,7 +11,7 @@ import QuestPanelSlice from './components/NewQuestPanel/QuestPanelSlice'
 const rootReducer = combineReducers({
   nav: TopBarSlice,
   search: SearchSlice,
-  questPanel: QuestPanelSlice
+  questPanel: QuestPanelSlice,
 })
 
 const Store = configureStore({
