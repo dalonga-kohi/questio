@@ -1,11 +1,11 @@
-import Home from '../../components/main/Home'
-import MainLayout from '../../layouts/MainLayout'
+import Login from '../../components/login'
+import LoginLayout from '../../layouts/LoginLayout'
 
 const LoginPage = () => {
   return (
-    <MainLayout>
-      <Home />
-    </MainLayout>
+    <LoginLayout>
+      <Login />
+    </LoginLayout>
   )
 }
 
