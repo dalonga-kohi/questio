@@ -4,7 +4,7 @@ const Home = () => {
   return (
     <div>
       <QuestSection category="popular" title="Most Popular 🔥" />
-      <QuestSection category="recommended" title="For You 😁" />
+      {/* <QuestSection category="recommended" title="For You 😁" /> */}
       <QuestSection category="latest" title="Latest 🎉" />
       <QuestSection category="beginner" title="For Beginners 👶" />
       <QuestSection category="advanced" title="Advanced 🏋️‍♀️" />
