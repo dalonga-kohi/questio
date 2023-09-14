@@ -23,8 +23,11 @@ const LoginForm: React.FC = () => {
   })
 
   return (
-  <form onSubmit={formik.handleSubmit} className="h-full py-20 px-8 sm:px-14 flex flex-col w-full sm:w-10/12 lg:w-8/12 shadow-md dark:bg-black bg-gray-300 md:rounded-xl">
-    <h1 className="text-5xl mb-10 font-semibold">SIGN IN</h1>
+    <form
+      onSubmit={formik.handleSubmit}
+      className="h-full py-20 px-8 sm:px-14 flex flex-col w-full sm:w-10/12 lg:w-8/12 shadow-md dark:bg-black bg-gray-300 md:rounded-xl"
+    >
+      <h1 className="text-5xl mb-10 font-semibold">SIGN IN</h1>
       <label htmlFor="email" className="text-md mb-1">
         Email
       </label>
@@ -59,12 +62,14 @@ const LoginForm: React.FC = () => {
           {formik.errors.password}
         </div>
       ) : null}
-      <span className='w-full flex justify-center'><input
-        type="submit"
-        value="sign in"
-        className="input rounded-xl py-2.5 w-full sm:max-w-md mt-12 focus:border-gray-600 dark:focus:border-gray-100 focus:border-2 uppercase dark:bg-accent bg-green-500 dark:text-black-darker border-0 shadow-sm font-medium cursor-pointer text-xl"
-      /></span>
-  </form>
+      <span className="w-full flex justify-center">
+        <input
+          type="submit"
+          value="sign in"
+          className="input rounded-xl py-2.5 w-full sm:max-w-md mt-12 focus:border-gray-600 dark:focus:border-gray-100 focus:border-2 uppercase dark:bg-accent bg-green-500 dark:text-black-darker border-0 shadow-sm font-medium cursor-pointer text-xl"
+        />
+      </span>
+    </form>
   )
 }
 

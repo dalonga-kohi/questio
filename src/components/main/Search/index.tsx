@@ -11,7 +11,7 @@ const Search = () => {
   const debounced = useDebounce(val, 1000)
 
   const query = (data: string) => {
-    if(!data) return
+    if (!data) return
 
     console.log(data)
   }
