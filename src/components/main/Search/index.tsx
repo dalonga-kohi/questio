@@ -11,6 +11,8 @@ const Search = () => {
   const debounced = useDebounce(val, 1000)
 
   const query = (data: string) => {
+    if(!data) return
+
     console.log(data)
   }
   useEffect(() => {
@@ -21,10 +23,15 @@ const Search = () => {
   }
   useDebounce(query, 3000)
   return (
-    <form className="flex flex-col justify-start items-center pt-4 sm:pt-6"
-      onSubmit={(e: FormEvent<HTMLFormElement>) => {e.preventDefault(); query(val)}}>
+    <form
+      className="flex flex-col justify-start items-center pt-4 sm:pt-6"
+      onSubmit={(e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        query(val)
+      }}
+    >
       <SearchBar handler={inputHandler} value={val} />
-      <input type='submit' value=''/>
+      <input type="submit" value="" />
     </form>
   )
 }

@@ -47,4 +47,9 @@
   .link {
     @apply underline dark:text-green-500 font-bold text-green-600;
   }
+
+  .input {
+    @apply dark:bg-black-light bg-white px-4 focus:border-green-500 dark:focus:border-accent border-2 transition-colors
+    dark:border-white-light border-slate-700 py-1.5 outline-none w-5/6 block;
+  }
 }
