@@ -4,6 +4,7 @@ import { createBrowserRouter } from 'react-router-dom'
 import SearchPage from '../pages/SearchPage'
 import AddNewPage from '../pages/AddNewPage'
 import SettingsPage from '../pages/SettingsPage'
+import LoginPage from '../pages/authentication/LoginPage'
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,11 @@ const router = createBrowserRouter([
   {
     path: '/settings',
     element: <SettingsPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/login',
+    element: <LoginPage />,
     errorElement: <ErrorPage />,
   },
 ])
