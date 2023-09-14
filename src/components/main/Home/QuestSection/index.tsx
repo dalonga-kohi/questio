@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { DataItem, axiosGet } from '../../../../lib/axios'
+import { QuestResponse, axiosGet } from '../../../../lib/axios'
+import Card from '../features/Card'
 
 type Category = 'latest' | 'popular' | 'recommended' | 'beginner' | 'advanced'
 
@@ -11,12 +12,12 @@ interface IQuestProps {
 
 const QuestSection = ({ category, title }: IQuestProps) => {
   const link = `/category/${category}`
-  const [data, setData] = useState<DataItem[]>([])
+  const [data, setData] = useState<QuestResponse | null>(null)
   const [loading, setLoading] = useState<boolean>(true)
   useEffect(() => {
-    axiosGet<DataItem[]>(`quests/?category=${category}&count=5`)
+    axiosGet<QuestResponse>(`quests/?category=${category}&count=5`)
       .then((response) => {
-        setData(response.data)
+        setData(response)
         setLoading(false)
       })
       .catch((error) => {
@@ -24,7 +25,6 @@ const QuestSection = ({ category, title }: IQuestProps) => {
         setLoading(false)
       })
   }, [category])
-  console.log(data)
 
   return (
     <>
@@ -37,7 +37,9 @@ const QuestSection = ({ category, title }: IQuestProps) => {
         </NavLink>
       </div>
 
-      <section>{loading ? 'Loading...' : '1'}</section>
+      <section>{loading ? 'Loading...' : data?.response.map((d, i) => {
+        return <Card key={i} id={d.id} title={d.title} img={d.image} />
+      })}</section>
     </>
   )
 }

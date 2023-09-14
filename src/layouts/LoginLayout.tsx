@@ -5,7 +5,7 @@ import Nav from '../components/login/interface/Nav'
 const LoginLayout = ({ children }: PropsWithChildren) => {
   return (
     <>
-    <Nav/>
+      <Nav />
       <span className="hidden">
         <ThemeIcon />
       </span>

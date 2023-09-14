@@ -1,17 +1,17 @@
-import { NavLink } from "react-router-dom"
-import { useSelector } from "../../../store"
+import { NavLink } from 'react-router-dom'
+import { useSelector } from '../../../store'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretLeft } from '@fortawesome/free-solid-svg-icons'
 const Nav = () => {
   const target = useSelector((state) => state.nav.historyPath)
 
-    return (
-        <nav className="px-4 md:px-6 py-6 flex absolute w-full items-center justify-between">
+  return (
+    <nav className="px-4 md:px-6 py-6 flex absolute w-full items-center justify-between">
       <NavLink to={target} className="link text-xl font-bold">
         <FontAwesomeIcon icon={faCaretLeft} /> Go back
       </NavLink>
-      </nav>
-    )
+    </nav>
+  )
 }
 
 export default Nav
