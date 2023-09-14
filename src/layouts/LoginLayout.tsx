@@ -5,11 +5,11 @@ import Nav from '../components/login/interface/Nav'
 const LoginLayout = ({ children }: PropsWithChildren) => {
   return (
     <>
-    <Nav/>
+      <Nav />
       <span className="hidden">
         <ThemeIcon />
       </span>
-      <main className="flex w-full items-center justify-center sm:items-start sm:px-20 sm:py-20 h-screen">
+      <main className="flex w-full items-center justify-center sm:items-start sm:px-36 sm:py-20 h-screen">
         {children}
       </main>
     </>
