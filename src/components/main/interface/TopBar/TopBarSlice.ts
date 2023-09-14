@@ -2,9 +2,15 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   isDark: 'false',
+  historyPath: '/',
 }
 interface State {
   isDark: string
+  historyPath: string
+}
+
+interface Action {
+  payload: { path: string }
 }
 
 const TopBarSlice = createSlice({
@@ -15,9 +21,12 @@ const TopBarSlice = createSlice({
       if (state.isDark === 'true') state.isDark = 'false'
       else state.isDark = 'true'
     },
+    addRoutingHistory: (state: State, action: Action) => {
+      state.historyPath = action.payload.path
+    },
   },
 })
 
-export const { toggleDarkMode } = TopBarSlice.actions
+export const { toggleDarkMode, addRoutingHistory } = TopBarSlice.actions
 
 export default TopBarSlice.reducer

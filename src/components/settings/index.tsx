@@ -5,7 +5,7 @@ const Settings = () => {
         <div className=" pl-5 pr-5 ">
           <img
             className="  rounded-full w-36 h-36 object-cover"
-            src="https://i.pinimg.com/originals/30/97/3f/30973fe665a93af8fb6097869565f52e.jpg"
+            src="http://194.107.126.10:8080/api/v1/img/111f4091c6cd7d4d9d0eef07f369beea.jpg"
           ></img>{' '}
         </div>
         <div className=" flex-col justify-center text-center">
