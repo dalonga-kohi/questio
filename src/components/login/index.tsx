@@ -1,6 +1,7 @@
 import React from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
+import { Link } from 'react-router-dom'
 
 const LoginForm: React.FC = () => {
   const formik = useFormik({
@@ -25,8 +26,9 @@ const LoginForm: React.FC = () => {
   return (
     <form
       onSubmit={formik.handleSubmit}
-      className="h-full py-20 px-8 sm:px-14 flex flex-col w-full sm:w-10/12 lg:w-8/12 shadow-md dark:bg-black bg-gray-300 md:rounded-xl"
+      className="h-screen sm:h-max py-12 px-8 sm:px-14 flex flex-col w-full max-w-3xl shadow rounded-lg divide-y dark:divide-gray-200 divide-gray-500 dark:bg-black bg-gray-300 md:rounded-xl"
     >
+      <div className="h-full w-full flex flex-col">
       <h1 className="text-5xl mb-10 font-semibold">SIGN IN</h1>
       <label htmlFor="email" className="text-md mb-1">
         Email
@@ -45,7 +47,7 @@ const LoginForm: React.FC = () => {
           {formik.errors.email}
         </div>
       ) : null}
-      <label htmlFor="password" className="text-md mb-1 mt-4">
+      <label htmlFor="password" className="text-md mb-1 mt-8">
         Password
       </label>
       <input
@@ -62,13 +64,18 @@ const LoginForm: React.FC = () => {
           {formik.errors.password}
         </div>
       ) : null}
-      <span className="w-full flex justify-center">
+      <span className="w-full flex justify-center mb-8">
         <input
           type="submit"
           value="sign in"
-          className="input rounded-xl py-2.5 w-full sm:max-w-md mt-12 focus:border-gray-600 dark:focus:border-gray-100 focus:border-2 uppercase dark:bg-accent bg-green-500 dark:text-black-darker border-0 shadow-sm font-medium cursor-pointer text-xl"
+          className="input rounded-lg py-2.5 w-full sm:max-w-md mt-12 focus:border-gray-600 dark:focus:border-gray-100 focus:border-2 uppercase dark:bg-accent bg-green-500 dark:text-black-darker border-0 shadow-sm font-medium cursor-pointer text-lg"
         />
       </span>
+      </div>
+      <div className='flex justify-around w-full flex-wrap py-2 md:py-4 items-center'>
+        <Link to="/reset" className='link'>Forgot password?</Link>
+        <Link to="/register" className='link ml-2'>Don't have an account?</Link>
+      </div>
     </form>
   )
 }

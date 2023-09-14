@@ -9,7 +9,7 @@ const LoginLayout = ({ children }: PropsWithChildren) => {
       <span className="hidden">
         <ThemeIcon />
       </span>
-      <main className="flex w-full items-center justify-center sm:items-start sm:px-20 sm:py-20 h-screen">
+      <main className="flex w-full items-center justify-center sm:items-start sm:px-36 sm:py-20 h-screen">
         {children}
       </main>
     </>

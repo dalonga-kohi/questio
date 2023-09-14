@@ -37,9 +37,13 @@ const QuestSection = ({ category, title }: IQuestProps) => {
         </NavLink>
       </div>
 
-      <section>{loading ? 'Loading...' : data?.response.map((d, i) => {
-        return <Card key={i} id={d.id} title={d.title} img={d.image} />
-      })}</section>
+      <section>
+        {loading
+          ? 'Loading...'
+          : data?.response.map((d, i) => {
+              return <Card key={i} id={d.id} title={d.title} img={d.image} />
+            })}
+      </section>
     </>
   )
 }
