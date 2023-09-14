@@ -1,14 +1,17 @@
 import { PropsWithChildren } from 'react'
-
+import ThemeIcon from '../components/main/interface/TopBar/features/ThemeIcon'
+import Nav from '../components/login/interface/Nav'
 
 const LoginLayout = ({ children }: PropsWithChildren) => {
   return (
     <>
-      
-      <main className="dark:bg-black bg-gray-300 h-screen rounded-t-3xl px-6 md:px-10 pt-2 pb-44 overflow-y-auto max-h-screen">
+    <Nav/>
+      <span className="hidden">
+        <ThemeIcon />
+      </span>
+      <main className="flex w-full items-center justify-center sm:items-start sm:px-20 sm:py-20 h-screen">
         {children}
       </main>
-      
     </>
   )
 }

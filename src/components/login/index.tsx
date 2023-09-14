@@ -1,6 +1,6 @@
-import React from 'react';
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
+import React from 'react'
+import { useFormik } from 'formik'
+import * as Yup from 'yup'
 
 const LoginForm: React.FC = () => {
   const formik = useFormik({
@@ -18,52 +18,59 @@ const LoginForm: React.FC = () => {
     }),
     onSubmit: (values) => {
       // Handle form submission here, e.g., send the data to an API
-      console.log('Form submitted with values:', values);
+      console.log('Form submitted with values:', values)
     },
-  });
+  })
 
   return (
-    <section className=' flex flex-col  items-center justify-between h-96 mt-36'>
-      <p className='text-5xl -mb-15'>Login</p>
-      <form onSubmit={formik.handleSubmit}>
-        <section className="form-group flex flex-col items-center my-12">
-          <label htmlFor="email" className='text-xl mb-2'>Email</label>
-          <input
-            type="text"
-            id="email"
-            name="email"
-            className='dark:bg-black-light bg-white-light rounded py-1 w-52 px-2'
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.email}
-          />
-          {formik.touched.email && formik.errors.email ? (
-            <div className="error text-center dark:text-red-500 text-red-600">{formik.errors.email}</div>
-          ) : null}
-        </section>
-        <section className="form-group flex flex-col items-center">
-          <label htmlFor="password" className='text-xl mb-2'>Password</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            className='dark:bg-black-light bg-white-light rounded py-1 w-52 px-2'
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.password}
-          />
-          {formik.touched.password && formik.errors.password ? (
-            <div className="error text-center dark:text-red-500 text-red-600">{formik.errors.password}</div>
-          ) : null}
-        </section>
-        <section className="form-group flex flex-col items-center">
-        <button type="submit" className=' w-52 py-2 m-10 rounded dark:bg-black-light bg-white hover:border-green-500 dark:hover:border-accent border-2 transition-colors
-        dark:border-white-light border-slate-700 outline-none max-w-2xl dark:active:bg-black-darker active:bg-white-light'>Login</button>
-        </section>
-        
-      </form>
-    </section>
-  );
-};
+    <form
+      onSubmit={formik.handleSubmit}
+      className="h-full py-20 px-8 sm:px-14 flex flex-col w-full sm:w-10/12 lg:w-8/12 shadow-md dark:bg-black bg-gray-300 md:rounded-xl"
+    >
+      <h1 className="text-5xl mb-10 font-semibold">SIGN IN</h1>
+      <label htmlFor="email" className="text-md mb-1">
+        Email
+      </label>
+      <input
+        type="text"
+        id="email"
+        name="email"
+        className="input rounded w-full text-xl"
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+        value={formik.values.email}
+      />
+      {formik.touched.email && formik.errors.email ? (
+        <div className="text-center dark:text-red-500 text-red-600">
+          {formik.errors.email}
+        </div>
+      ) : null}
+      <label htmlFor="password" className="text-md mb-1 mt-4">
+        Password
+      </label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        className="input rounded w-full text-xl"
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+        value={formik.values.password}
+      />
+      {formik.touched.password && formik.errors.password ? (
+        <div className="text-center dark:text-red-500 text-red-600">
+          {formik.errors.password}
+        </div>
+      ) : null}
+      <span className="w-full flex justify-center">
+        <input
+          type="submit"
+          value="sign in"
+          className="input rounded-xl py-2.5 w-full sm:max-w-md mt-12 focus:border-gray-600 dark:focus:border-gray-100 focus:border-2 uppercase dark:bg-accent bg-green-500 dark:text-black-darker border-0 shadow-sm font-medium cursor-pointer text-xl"
+        />
+      </span>
+    </form>
+  )
+}
 
-export default LoginForm;
+export default LoginForm
