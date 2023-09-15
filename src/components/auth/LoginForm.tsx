@@ -16,6 +16,8 @@ const LoginForm = () => {
 
         <Field
           caption="email"
+          title="email"
+          type="email"
           change={loginFormik.handleChange}
           blur={loginFormik.handleBlur}
           error={loginFormik.errors.email}
@@ -27,6 +29,8 @@ const LoginForm = () => {
 
         <Field
           caption="password"
+          title="password"
+          type="password"
           change={loginFormik.handleChange}
           blur={loginFormik.handleBlur}
           error={loginFormik.errors.password}
