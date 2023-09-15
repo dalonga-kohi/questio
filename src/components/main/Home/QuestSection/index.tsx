@@ -28,7 +28,7 @@ const QuestSection = ({ category, title }: IQuestProps) => {
 
   return (
     <>
-      <div className="flex w-full justify-between items-center my-6">
+      <div className="flex w-full justify-between items-center mb-2">
         <h2>
           <NavLink to={link}>{title}</NavLink>
         </h2>
@@ -37,11 +37,11 @@ const QuestSection = ({ category, title }: IQuestProps) => {
         </NavLink>
       </div>
 
-      <section>
+      <section className="mb-6">
         {loading
           ? 'Loading...'
           : data?.response.map((d, i) => {
-              return <Card key={i} id={d.id} title={d.title} img={d.image} />
+              return <Card key={i} data={d} />
             })}
       </section>
     </>
