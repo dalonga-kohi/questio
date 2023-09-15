@@ -3,30 +3,26 @@ import { useSelector } from '../../../store'
 import { useDispatch } from 'react-redux'
 import { setInputValue } from './SearchSlice'
 import useDebounce from '../../../hooks/useDebounce'
-import { FormEvent, useEffect } from 'react'
+import { FormEvent, useEffect, useState } from 'react'
 
 const Search = () => {
   const dispatch = useDispatch()
   const val = useSelector((state) => state.search.val)
   const debounced = useDebounce(val, 1000)
-  let isSubmit = false
+  const [prev, setPrev] = useState<string>('')
 
-  const query = (data: string) => {
+  const query = (data: string = debounced) => {
     if (!data) return
-    console.log(data)
-  }
-
-  const queryDeb = (data: string) => {
-    if(isSubmit) {
-      isSubmit = false
+    if (data == prev) {
       return
     }
-    query(data)
-  }
 
-  useEffect(() => {
-    queryDeb(debounced)
-  }, [debounced])
+    setPrev(data)
+    console.log(data)
+  }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(query, [debounced])
+
   const inputHandler = (e: InputEvent) => {
     dispatch(setInputValue({ val: e.target.value }))
   }
@@ -36,7 +32,6 @@ const Search = () => {
       className="flex flex-col justify-start items-center pt-4 sm:pt-6"
       onSubmit={(e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        isSubmit = true
         query(val)
       }}
     >
