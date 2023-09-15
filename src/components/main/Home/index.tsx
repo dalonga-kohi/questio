@@ -2,7 +2,7 @@ import QuestSection from './QuestSection'
 
 const Home = () => {
   return (
-    <div className='pt-6'>
+    <div className="pt-6">
       <QuestSection category="popular" title="Most Popular 🔥" />
       {/* <QuestSection category="recommended" title="For You 😁" /> */}
       <QuestSection category="latest" title="Latest 🎉" />

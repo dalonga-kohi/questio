@@ -11,16 +11,16 @@ export async function axiosGet<T>(
 }
 
 export interface QuestItem {
-  id?: number;
-  title?: string;
-  description?: string;
-  image?: string;
-  author_name?: string;
-  steps?: string;
-  tags?: string;
-  enrolled?: number;
-  achieved?: number;
-  creation_date?: string;
+  id?: number
+  title?: string
+  description?: string
+  image?: string
+  author_name?: string
+  steps?: string
+  tags?: string
+  enrolled?: number
+  achieved?: number
+  creation_date?: string
 }
 
 export interface QuestResponse {
