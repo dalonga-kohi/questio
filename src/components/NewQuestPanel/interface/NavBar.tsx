@@ -9,7 +9,7 @@ const NavBar = () => {
   return (
     <nav className="px-4 md:px-6 py-6 flex absolute w-full items-center justify-between">
       <NavLink to={target} className="link text-xl font-bold">
-        <FontAwesomeIcon icon={faArrowLeft } /> Go back
+        <FontAwesomeIcon icon={faArrowLeft} /> Go back
       </NavLink>
       <h1 className="text-xl font-black dark:text-green-500 text-green-600">
         ADD NEW QUEST

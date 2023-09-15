@@ -3,21 +3,26 @@ import { useSelector } from '../../../store'
 import { useDispatch } from 'react-redux'
 import { setInputValue } from './SearchSlice'
 import useDebounce from '../../../hooks/useDebounce'
-import { FormEvent, useEffect } from 'react'
+import { FormEvent, useEffect, useState } from 'react'
 
 const Search = () => {
   const dispatch = useDispatch()
   const val = useSelector((state) => state.search.val)
   const debounced = useDebounce(val, 1000)
+  const [prev, setPrev] = useState<string>('')
 
-  const query = (data: string) => {
+  const query = (data: string = debounced) => {
     if (!data) return
+    if (data == prev) {
+      return
+    }
 
+    setPrev(data)
     console.log(data)
   }
-  useEffect(() => {
-    query(debounced)
-  }, [debounced])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(query, [debounced])
+
   const inputHandler = (e: InputEvent) => {
     dispatch(setInputValue({ val: e.target.value }))
   }

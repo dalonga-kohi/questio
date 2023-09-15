@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react'
 import ThemeIcon from '../components/main/interface/TopBar/features/ThemeIcon'
-import Nav from '../components/login/interface/Nav'
+import Nav from '../components/auth/interface/Nav'
 
 const LoginLayout = ({ children }: PropsWithChildren) => {
   return (
@@ -9,7 +9,7 @@ const LoginLayout = ({ children }: PropsWithChildren) => {
       <span className="hidden">
         <ThemeIcon />
       </span>
-      <main className="flex w-full items-center justify-center sm:items-start sm:px-36 sm:py-20 h-screen">
+      <main className="flex w-full items-center justify-center sm:items-start sm:px-36 sm:pb-12 sm:pt-24 h-screen">
         {children}
       </main>
     </>
