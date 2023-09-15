@@ -52,7 +52,6 @@ const RegisterForm = () => {
           value={registerFormik.values.passwordConfirmation}
         />
 
-
         <Submit value="sign up" />
       </div>
       <RegisterLinks />

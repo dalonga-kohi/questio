@@ -7,7 +7,6 @@ export const useRegisterFormik = () =>
       email: '',
       password: '',
       passwordConfirmation: '',
-      
     },
     validationSchema: Yup.object({
       email: Yup.string()
@@ -16,8 +15,10 @@ export const useRegisterFormik = () =>
       password: Yup.string()
         .min(8, 'Password must be at least 8 characters')
         .required('Password is required'),
-      passwordConfirmation: Yup.string()
-        .oneOf([Yup.ref('password'), undefined], 'Passwords must match'),
+      passwordConfirmation: Yup.string().oneOf(
+        [Yup.ref('password'), undefined],
+        'Passwords must match',
+      ),
     }),
     onSubmit: (values) => {
       // Handle form submission here, e.g., send the data to an API
