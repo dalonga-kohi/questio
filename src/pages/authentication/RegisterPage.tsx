@@ -1,11 +1,11 @@
-import Home from '../../components/main/Home'
-import MainLayout from '../../layouts/MainLayout'
+import RegisterForm from '../../components/auth/RegisterForm'
+import LoginLayout from '../../layouts/LoginLayout'
 
 const RegisterPage = () => {
   return (
-    <MainLayout>
-      <Home />
-    </MainLayout>
+    <LoginLayout>
+      <RegisterForm />
+    </LoginLayout>
   )
 }
 
