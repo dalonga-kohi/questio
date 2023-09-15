@@ -2,8 +2,9 @@ import Field from './features/Field'
 import LoginLinks from './features/LoginLinks'
 import Submit from './features/Submit'
 import Heading from './features/Heading'
-import { loginFormik } from './loginFormik'
+import { useLoginFormik } from '../../hooks/useLoginFormik'
 const LoginForm = () => {
+  const loginFormik = useLoginFormik()
 
   return (
     <form
