@@ -37,7 +37,7 @@ const QuestSection = ({ category, title }: IQuestProps) => {
         </NavLink>
       </div>
 
-      <section className="mb-6">
+      <section className="mb-6 flex min-w-max">
         {loading
           ? 'Loading...'
           : data?.response.map((d, i) => {
