@@ -5,6 +5,7 @@ import SearchPage from '../pages/SearchPage'
 import AddNewPage from '../pages/AddNewPage'
 import SettingsPage from '../pages/SettingsPage'
 import LoginPage from '../pages/authentication/LoginPage'
+import RegisterPage from '../pages/authentication/RegisterPage'
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,11 @@ const router = createBrowserRouter([
   {
     path: '/login',
     element: <LoginPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/register',
+    element: <RegisterPage />,
     errorElement: <ErrorPage />,
   },
 ])

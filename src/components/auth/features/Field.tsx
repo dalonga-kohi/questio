@@ -5,6 +5,8 @@ interface IFormProps {
   error: string | undefined
   touched: boolean | undefined
   caption: string
+  title: string
+  type: string
 }
 
 const Field = ({
@@ -14,14 +16,16 @@ const Field = ({
   error,
   touched,
   caption,
+  title,
+  type,
 }: IFormProps) => {
   return (
     <>
       <label htmlFor={caption} className="text-md mb-1 capitalize">
-        {caption}
+        {title}
       </label>
       <input
-        type={caption}
+        type={type}
         id={caption}
         name={caption}
         className="input rounded w-full text-xl"
