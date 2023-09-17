@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { QuestResponse, axiosGet } from '../../../../lib/axios'
-import Card from '../features/Card'
+import Slider from './Slider'
 
 type Category = 'latest' | 'popular' | 'recommended' | 'beginner' | 'advanced'
 
@@ -37,13 +37,7 @@ const QuestSection = ({ category, title }: IQuestProps) => {
         </NavLink>
       </div>
 
-      <section className="mb-6 flex min-w-max">
-        {loading
-          ? 'Loading...'
-          : data?.response.map((d, i) => {
-              return <Card key={i} data={d} />
-            })}
-      </section>
+      <Slider loading={loading} data={data}/>
     </>
   )
 }
