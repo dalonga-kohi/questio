@@ -38,7 +38,7 @@ const LoginForm = () => {
         />
         <Forgot />
         <Submit value="sign in to quest" />
-      <LoginLinks />
+        <LoginLinks />
       </div>
     </Form>
   )
