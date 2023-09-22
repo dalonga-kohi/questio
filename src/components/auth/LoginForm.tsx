@@ -4,6 +4,7 @@ import Submit from './features/Submit'
 import Heading from './features/Heading'
 import { useLoginFormik } from '../../hooks/useLoginFormik'
 import Form from './features/Form'
+import Forgot from './features/Forgot'
 const LoginForm = () => {
   const loginFormik = useLoginFormik()
 
@@ -23,7 +24,7 @@ const LoginForm = () => {
           value={loginFormik.values.email}
         />
 
-        <span className="mt-6"></span>
+        <span className="mt-4"></span>
 
         <Field
           caption="password"
@@ -35,10 +36,10 @@ const LoginForm = () => {
           touched={loginFormik.touched.password}
           value={loginFormik.values.password}
         />
-
-        <Submit value="sign in" />
-      </div>
+        <Forgot />
+        <Submit value="sign in to quest" />
       <LoginLinks />
+      </div>
     </Form>
   )
 }
