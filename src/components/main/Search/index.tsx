@@ -4,21 +4,29 @@ import { useDispatch } from 'react-redux'
 import { setInputValue } from './SearchSlice'
 import useDebounce from '../../../hooks/useDebounce'
 import { FormEvent, useEffect, useState } from 'react'
+import { QuestResponse, axiosGet } from '../../../lib/axios'
+import Card from '../Home/features/Card'
 
 const Search = () => {
   const dispatch = useDispatch()
   const val = useSelector((state) => state.search.val)
   const debounced = useDebounce(val, 1000)
   const [prev, setPrev] = useState<string>('')
+  const [data, setData] = useState<QuestResponse | null>(null)
+  const [loading, setLoading] = useState<boolean>(false)
 
   const query = (data: string = debounced) => {
     if (!data) return
-    if (data == prev) {
-      return
-    }
+    if (data == prev) return
 
     setPrev(data)
-    console.log(data)
+    setLoading(true)
+    const query = `quests?count=10&page=1&q=${data}`
+    axiosGet<QuestResponse>(query)
+    .then(d => setData(d))
+    .catch(e => console.error(e))
+    .finally(() => setLoading(false))
+
   }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(query, [debounced])
@@ -28,6 +36,7 @@ const Search = () => {
   }
   useDebounce(query, 3000)
   return (
+    <>
     <form
       className="flex flex-col justify-start items-center pt-4 sm:pt-6"
       onSubmit={(e: FormEvent<HTMLFormElement>) => {
@@ -37,7 +46,14 @@ const Search = () => {
     >
       <SearchBar handler={inputHandler} value={val} />
       <input type="submit" value="" />
+
     </form>
+    {loading
+      ? 'Loading...'
+      : data?.response.map((d, i) => {
+          return <Card key={i} data={d} />
+        })}
+    </>
   )
 }
 
