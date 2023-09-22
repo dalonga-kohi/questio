@@ -37,7 +37,7 @@ const QuestSection = ({ category, title }: IQuestProps) => {
         </NavLink>
       </div>
 
-      <Slider loading={loading} data={data}/>
+      <Slider loading={loading} data={data} />
     </>
   )
 }
