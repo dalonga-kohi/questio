@@ -3,15 +3,13 @@ import RegisterLinks from './features/RegisterLinks'
 import Submit from './features/Submit'
 import Heading from './features/Heading'
 import { useRegisterFormik } from '../../hooks/useRegisterFormik'
+import Form from './features/Form'
 
 const RegisterForm = () => {
   const registerFormik = useRegisterFormik()
 
   return (
-    <form
-      onSubmit={registerFormik.handleSubmit}
-      className="h-screen sm:h-max pb-12 pt-24 sm:pt-12 px-8 sm:px-14 flex flex-col w-full max-w-3xl shadow rounded-lg divide-y dark:divide-gray-200 divide-gray-500 dark:bg-black bg-gray-300 md:rounded-xl"
-    >
+    <Form submit={registerFormik.handleSubmit}>
       <div className="h-full w-full flex flex-col">
         <Heading>Create an Account</Heading>
 
@@ -55,7 +53,7 @@ const RegisterForm = () => {
         <Submit value="sign up" />
       </div>
       <RegisterLinks />
-    </form>
+    </Form>
   )
 }
 

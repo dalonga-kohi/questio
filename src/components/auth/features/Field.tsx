@@ -21,14 +21,14 @@ const Field = ({
 }: IFormProps) => {
   return (
     <>
-      <label htmlFor={caption} className="text-md mb-1 capitalize">
+      <label htmlFor={caption} className="text-md mb-1 capitalize ml-1">
         {title}
       </label>
       <input
         type={type}
         id={caption}
         name={caption}
-        className="input rounded w-full text-xl"
+        className="input rounded-xl w-full text-xl"
         onChange={change}
         onBlur={blur}
         value={value}

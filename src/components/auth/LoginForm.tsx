@@ -3,14 +3,13 @@ import LoginLinks from './features/LoginLinks'
 import Submit from './features/Submit'
 import Heading from './features/Heading'
 import { useLoginFormik } from '../../hooks/useLoginFormik'
+import Form from './features/Form'
+import Forgot from './features/Forgot'
 const LoginForm = () => {
   const loginFormik = useLoginFormik()
 
   return (
-    <form
-      onSubmit={loginFormik.handleSubmit}
-      className="h-screen sm:h-max pb-12 pt-24 sm:pt-12 px-8 sm:px-14 flex flex-col w-full max-w-3xl shadow rounded-lg divide-y dark:divide-gray-200 divide-gray-500 dark:bg-black bg-gray-300 md:rounded-xl"
-    >
+    <Form submit={loginFormik.handleSubmit}>
       <div className="h-full w-full flex flex-col">
         <Heading>Welcome Back!</Heading>
 
@@ -25,7 +24,7 @@ const LoginForm = () => {
           value={loginFormik.values.email}
         />
 
-        <span className="mt-6"></span>
+        <span className="mt-4"></span>
 
         <Field
           caption="password"
@@ -37,11 +36,11 @@ const LoginForm = () => {
           touched={loginFormik.touched.password}
           value={loginFormik.values.password}
         />
-
-        <Submit value="sign in" />
+        <Forgot />
+        <Submit value="sign in to quest" />
+        <LoginLinks />
       </div>
-      <LoginLinks />
-    </form>
+    </Form>
   )
 }
 
