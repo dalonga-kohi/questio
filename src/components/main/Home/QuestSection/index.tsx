@@ -28,7 +28,7 @@ const QuestSection = ({ category, title }: IQuestProps) => {
 
   return (
     <>
-      <div className="flex w-full justify-between items-center mb-2">
+      <div className="flex w-full justify-between items-center mb-6">
         <h2>
           <NavLink to={link}>{title}</NavLink>
         </h2>

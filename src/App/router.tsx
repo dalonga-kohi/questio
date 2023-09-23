@@ -6,6 +6,7 @@ import AddNewPage from '../pages/AddNewPage'
 import SettingsPage from '../pages/SettingsPage'
 import LoginPage from '../pages/authentication/LoginPage'
 import RegisterPage from '../pages/authentication/RegisterPage'
+import QuestsPage from '../pages/QuestsPage'
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,16 @@ const router = createBrowserRouter([
   {
     path: '/register',
     element: <RegisterPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/category/:cat',
+    element: <QuestsPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/category/',
+    element: <QuestsPage />,
     errorElement: <ErrorPage />,
   },
 ])

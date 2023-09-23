@@ -62,13 +62,14 @@ const Slider = ({ loading, data }: IProps) => {
   return (
     <section
       ref={comp}
-      className="mb-6 w-full relative whitespace-nowrap overflow-hidden"
+      className="mb-12 w-screen relative whitespace-nowrap overflow-hidden"
     >
       {loading
         ? 'Loading...'
         : data?.response.map((d, i) => {
             return <Card key={i} data={d} />
-          })}
+      })}
+      {!loading && !data ? 'No Results!' : ''}
     </section>
   )
 }
