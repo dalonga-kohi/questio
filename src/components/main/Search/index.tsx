@@ -23,10 +23,9 @@ const Search = () => {
     setLoading(true)
     const query = `quests?count=10&page=1&q=${data}`
     axiosGet<QuestResponse>(query)
-    .then(d => setData(d))
-    .catch(e => console.error(e))
-    .finally(() => setLoading(false))
-
+      .then((d) => setData(d))
+      .catch((e) => console.error(e))
+      .finally(() => setLoading(false))
   }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(query, [debounced])
@@ -37,22 +36,21 @@ const Search = () => {
   useDebounce(query, 3000)
   return (
     <>
-    <form
-      className="flex flex-col justify-start items-center pt-4 sm:pt-6"
-      onSubmit={(e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
-        query(val)
-      }}
-    >
-      <SearchBar handler={inputHandler} value={val} />
-      <input type="submit" value="" />
-
-    </form>
-    {loading
-      ? 'Loading...'
-      : data?.response.map((d, i) => {
-          return <Card key={i} data={d} />
-        })}
+      <form
+        className="flex flex-col justify-start items-center pt-4 sm:pt-6"
+        onSubmit={(e: FormEvent<HTMLFormElement>) => {
+          e.preventDefault()
+          query(val)
+        }}
+      >
+        <SearchBar handler={inputHandler} value={val} />
+        <input type="submit" value="" />
+      </form>
+      {loading
+        ? 'Loading...'
+        : data?.response.map((d, i) => {
+            return <Card key={i} data={d} />
+          })}
     </>
   )
 }
