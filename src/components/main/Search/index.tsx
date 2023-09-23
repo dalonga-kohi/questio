@@ -5,7 +5,7 @@ import { setInputValue } from './SearchSlice'
 import useDebounce from '../../../hooks/useDebounce'
 import { FormEvent, useEffect, useState } from 'react'
 import { QuestResponse, axiosGet } from '../../../lib/axios'
-import Card from '../Home/features/Card'
+import QuestsGrid from '../Quests/features/QuestsGrid'
 
 const Search = () => {
   const dispatch = useDispatch()
@@ -46,11 +46,7 @@ const Search = () => {
         <SearchBar handler={inputHandler} value={val} />
         <input type="submit" value="" />
       </form>
-      {loading
-        ? 'Loading...'
-        : data?.response.map((d, i) => {
-            return <Card key={i} data={d} />
-          })}
+      <QuestsGrid loading={loading} data={data} />
     </>
   )
 }

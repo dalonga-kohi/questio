@@ -1,12 +1,12 @@
-import QuestsGrid from "../components/main/QuestsGrid"
-import MainLayout from "../layouts/MainLayout"
+import Quests from '../components/main/Quests'
+import MainLayout from '../layouts/MainLayout'
 
 const QuestsPage = () => {
-    return (
-        <MainLayout>
-            <QuestsGrid />
-        </MainLayout>
-    )
+  return (
+    <MainLayout>
+      <Quests />
+    </MainLayout>
+  )
 }
 
 export default QuestsPage
