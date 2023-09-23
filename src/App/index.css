@@ -51,10 +51,11 @@
 
   .input {
     @apply dark:bg-black-light bg-white px-4 focus:border-green-500 dark:focus:border-accent border-2 transition-colors
-    dark:border-white-light border-slate-700 py-2.5 outline-none w-5/6 block text-lg;
+    dark:border-white-light border-slate-700 py-2.5 outline-none w-5/6 block text-lg rounded-xl;
   }
   .text-anim {
     animation: text-anim 5s ease infinite;
+    @apply bg-gradient-to-r bg-clip-text text-transparent;
   }
 }
 

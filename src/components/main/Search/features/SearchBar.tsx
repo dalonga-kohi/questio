@@ -15,7 +15,7 @@ const SearchBar = ({ handler, value }: IProps) => {
         value={value}
         onChange={handler}
         placeholder="🔍 Search for quests..."
-        className="rounded-3xl input max-w-2xl py-2"
+        className="input max-w-2xl py-2"
       />
     </>
   )
