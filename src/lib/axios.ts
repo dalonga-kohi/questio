@@ -11,6 +11,19 @@ export async function axiosGet<T>(
   return response.data
 }
 
+export async function axiosPost<T>(
+  url: string,
+  data: Data,
+  config?: AxiosRequestConfig,
+): Promise<T> {
+  const response: AxiosResponse<T> = await axios.post(
+    API_URL + url,
+    data,
+    config,
+  )
+  return response.data
+}
+
 export interface QuestItem {
   id?: number
   title?: string
@@ -26,4 +39,14 @@ export interface QuestItem {
 
 export interface QuestResponse {
   response: QuestItem[]
+}
+
+export interface LoginResponse {
+  response?: string
+  error?: string
+}
+
+interface Data {
+  email?: string
+  password?: string
 }
