@@ -1,5 +1,6 @@
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
+import { LoginResponse, axiosPost } from '../lib/axios'
 
 export const useLoginFormik = () =>
   useFormik({
@@ -16,7 +17,15 @@ export const useLoginFormik = () =>
         .required('Password is required'),
     }),
     onSubmit: (values) => {
-      // Handle form submission here, e.g., send the data to an API
-      console.log('Form submitted with values:', values)
+      axiosPost<LoginResponse>('login', values)
+        .then((res) => console.log(res.response))
+        .catch((err:Error) => {
+          if (!err.message) return
+          console.error(err.message)
+        })
     },
   })
+
+  interface Error{
+    message?: string
+  }
