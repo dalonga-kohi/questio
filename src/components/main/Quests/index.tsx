@@ -22,8 +22,8 @@ const Quests = () => {
   }, [cat])
   return (
     <div className="xl:px-2 py-3 flex flex-col justify-center items-center w-full">
-      <Nav title={cat}/>
-      <QuestsGrid loading={loading} data={data}/>
+      <Nav title={cat} />
+      <QuestsGrid loading={loading} data={data} />
     </div>
   )
 }

@@ -15,7 +15,7 @@ const QuestSection = ({ category, title }: IQuestProps) => {
   const [data, setData] = useState<QuestResponse | null>(null)
   const [loading, setLoading] = useState<boolean>(true)
   useEffect(() => {
-    axiosGet<QuestResponse>(`quests/?category=${category}&count=5`)
+    axiosGet<QuestResponse>(`quests/?category=${category}&count=6`)
       .then((response) => {
         setData(response)
         setLoading(false)
