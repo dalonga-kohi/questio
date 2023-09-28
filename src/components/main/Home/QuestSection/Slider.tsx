@@ -67,8 +67,8 @@ const Slider = ({ loading, data }: IProps) => {
       {loading
         ? 'Loading...'
         : data?.response.map((d, i) => {
-            return <Card key={i} data={d} />
-      })}
+            return <Card key={i} data={d} isInline={true}/>
+          })}
       {!loading && !data ? 'No Results!' : ''}
     </section>
   )
