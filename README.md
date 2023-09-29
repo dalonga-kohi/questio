@@ -4,6 +4,10 @@
 
 Find goal in your live and start working!
 
+## Pre-requirements
+
+Mysql database
+
 ## Run Locally
 
 ```bash
@@ -13,15 +17,23 @@ Find goal in your live and start working!
 ```bash
   cd questio
 ```
-
 ```bash
-  npm i
+npm i && npm i -D
 ```
 
 ```bash
-  npm run build
+cd api
 ```
+```bash
+npm i && npm i -D
+```
+```bash
+  mkdir dist && mkdir uploads
+```
+Load sql scheme to the database
 
 ```bash
-  npm run preview
+  npm run dev
 ```
+## Configuration
+For backend, rename api/.env.example to .env and modify the file acordingly.
