@@ -1,42 +1,35 @@
 # QUEST.IO
-
+ 
 ## Progessive Web App to motivate yourself to do hard things
-
+ 
 Find goal in your live and start working!
-
+ 
 ## Pre-requirements
-
-Mysql database
-
+ 
+SQL database
+ 
 ## Run Locally
-
+ 
 ```bash
-  git clone git@github.com:dalonga-kohi/questio.git
+git clone git@github.com:dalonga-kohi/questio.git
 ```
-
+ 
 ```bash
-  cd questio
-```
-```bash
-npm i && npm i -D
-```
-
-```bash
-cd api
+cd questio
 ```
 ```bash
-npm i && npm i -D
+npm i -D --workspaces
 ```
 ```bash
-  mkdir dist && mkdir uploads
+mkdir api\dist && mkdir api\dist\uploads
 ```
 Load [sql scheme](https://github.com/dalonga-kohi/questio/blob/master/api/questio.sql) to the database
 ```bash
-  cd ..
+ cd ..
 ```
-
+ 
 ```bash
-  npm run dev
+ npm run dev
 ```
 ## Configuration
 For backend, rename api/.env.example to .env and modify the file acordingly.
