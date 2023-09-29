@@ -19,13 +19,13 @@ export const useLoginFormik = () =>
     onSubmit: (values) => {
       axiosPost<LoginResponse>('login', values)
         .then((res) => console.log(res.response))
-        .catch((err:Error) => {
+        .catch((err: Error) => {
           if (!err.message) return
           console.error(err.message)
         })
     },
   })
 
-  interface Error{
-    message?: string
-  }
+interface Error {
+  message?: string
+}
