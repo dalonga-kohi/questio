@@ -30,7 +30,10 @@ npm i && npm i -D
 ```bash
   mkdir dist && mkdir uploads
 ```
-Load sql scheme to the database
+Load [sql scheme](https://github.com/dalonga-kohi/questio/blob/master/api/questio.sql) to the database
+```bash
+  cd ..
+```
 
 ```bash
   npm run dev
