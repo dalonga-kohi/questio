@@ -17,5 +17,8 @@
     "build": "npx lerna run build",
     "prepare": "husky install"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@questio/api": "*",
+    "@questio/frontend": "*"
+  }
 }
