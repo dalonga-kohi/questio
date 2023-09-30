@@ -15,7 +15,7 @@
   "scripts": {
     "dev": "npx lerna run dev",
     "build": "npx lerna run build",
-    "prepare": "husky install"
+    "prepare": "npx husky install"
   },
   "dependencies": {
     "@questio/api": "*",
