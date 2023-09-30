@@ -6,7 +6,7 @@
   "main": "src/index.ts",
   "scripts": {
     "start": "node dist/index.js",
-    "build": "npx tsc && cd dist && mkdir uploads",
+    "build": "npx tsc",
     "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\"",
     "lint": "npx eslint **/*.ts --fix && npx prettier **/*.ts --write",
     "preview": "node dist/index.js"
