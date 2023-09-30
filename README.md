@@ -13,7 +13,6 @@ SQL database
 ```bash
 git clone git@github.com:dalonga-kohi/questio.git
 ```
- 
 ```bash
 cd questio
 ```
@@ -24,12 +23,9 @@ npm i -D --workspaces
 mkdir api\dist && mkdir api\dist\uploads
 ```
 Load [sql scheme](https://github.com/dalonga-kohi/questio/blob/master/api/questio.sql) to the database
-```bash
- cd ..
-```
  
 ```bash
- npm run dev
+npm run dev
 ```
 ## Configuration
 For backend, rename api/.env.example to .env and modify the file acordingly.
