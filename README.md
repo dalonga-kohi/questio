@@ -24,7 +24,10 @@ cd questio
 npm i -D --workspaces
 ```
 ```bash
-npx sequelize-cli db:migrate
+cd api && npx sequelize-cli db:migrate
+```
+```bash
+cd ..
 ```
 ```bash
 npm run dev
