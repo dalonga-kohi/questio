@@ -1,11 +1,12 @@
 import jwt from 'jsonwebtoken'
 import { Field, IQuest, Message } from '../data/types'
 import sharp from 'sharp'
-import { ABS_PATH } from '..'
+import { PATH } from '..'
 import { connection, dataTable } from '../database/connection'
 import User from '../models/user.model'
 import { UploadedFile } from 'express-fileupload'
 import fs from 'fs'
+import { join, resolve } from 'path'
 export function parseToInt(num: string | undefined): number {
   if (!num) return -1
 
@@ -110,7 +111,7 @@ export async function uploadFile(
 
     const timestamp = new Date().getTime()
     const randomString = Math.random().toString(36).substring(2, 15)
-    const outputPath = `${ABS_PATH}${timestamp}-${randomString}.jpg`
+    const outputPath = join(PATH, `${timestamp}-${randomString}.jpg`)
     const relPath = `/api/v1/img/${timestamp}-${randomString}.jpg`
     fs.writeFileSync(outputPath, optimizedImage)
     return relPath
@@ -130,7 +131,7 @@ export async function getUID(id: number): Promise<Message> {
 
 export function remFile(fileName: string | undefined): boolean {
   if (!fileName) return false
-  const file = `${ABS_PATH}${fileName}`
+  const file = resolve(PATH, fileName)
   let flag = true
   if (!fs.existsSync(file)) return false
   fs.unlink(file, (err) => {

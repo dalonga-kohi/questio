@@ -2,12 +2,15 @@ import { useEffect, useRef, useState } from 'react'
 import { BASE_URL, QuestItem } from '../../../../lib/axios'
 import Tag from './Tag'
 import { FastAverageColor } from 'fast-average-color'
+import Modal from './modal'
 
 interface IProps {
   data: QuestItem
   isInline: boolean
 }
 const Card = ({ data, isInline = false }: IProps) => {
+  const [showModal, setModal] = useState<boolean>(false)
+  const show = () => setModal(!showModal)
   const ctx = useRef<HTMLDivElement>(null)
   const img = BASE_URL + data.image
   const [, setColor] = useState<string>('')
@@ -30,6 +33,7 @@ const Card = ({ data, isInline = false }: IProps) => {
 
   return (
     <article
+      onClick={show}
       style={{ backgroundImage: `url(${img})` }}
       className={`${
         isInline ? 'mr-4' : ''
@@ -48,6 +52,7 @@ const Card = ({ data, isInline = false }: IProps) => {
           {data.title}
         </h3>
       </div>
+      <Modal showModal={showModal} />
     </article>
   )
 }
