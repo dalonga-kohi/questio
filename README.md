@@ -1,19 +1,22 @@
 # QUEST.IO
-
+ 
 ## Progessive Web App to motivate yourself to do hard things
-
+ 
 Find goal in your live and start working!
-
+ 
 ## Pre-requirements
-
+ 
 SQL database
 
-## Run Locally
+## Configuration
+For backend, remove .example from all the files in [api](https://github.com/dalonga-kohi/questio/tree/master/api) dir and modify them acordingly.
 
+## Run Locally
+ 
 ```bash
 git clone git@github.com:dalonga-kohi/questio.git
 ```
-
+ 
 ```bash
 cd questio
 ```
@@ -21,7 +24,8 @@ cd questio
 npm i -D --workspaces
 ```
 ```bash
- npm run dev
+npx sequelize-cli db:migrate
 ```
-## Configuration
-For backend, remove .example from all the files in [api](https://github.com/dalonga-kohi/questio/tree/master/api) dir and modify them acordingly.
+```bash
+npm run dev
+```
