@@ -7,9 +7,11 @@ import logger from './middleware/logger'
 import setCache from './middleware/cache'
 import authorize from './middleware/authorize'
 import fileUpload from 'express-fileupload'
+import { checkDB } from './database/connection'
+import { join, resolve } from 'path'
+import fs from 'fs'
 
-export const PATH = 'uploads\\'
-export const ABS_PATH = `${__dirname}\\${PATH}`
+export const PATH = resolve('uploads')
 dotenv.config()
 
 //set all middlewares
@@ -22,11 +24,15 @@ router.use(setCache)
 router.use(cookieParser())
 router.use(authorize)
 router.use(logger)
-router.use(express.static(`${__dirname}\\${PATH}`))
+router.use(express.static(PATH))
 import './methods/'
-import { checkDB } from './database/connection'
 
 checkDB()
+
+if(!fs.existsSync(join(PATH))) {
+    fs.mkdirSync(PATH)
+    console.log('Created new directory: ', PATH)
+}
 
 const PORT = process.env.PORT || 8080
 app.listen(PORT, () => console.log(`listening on http://localhost:${PORT}`))

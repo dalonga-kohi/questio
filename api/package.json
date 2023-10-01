@@ -21,8 +21,10 @@
     "express": "^4.18.2",
     "express-fileupload": "^1.4.0",
     "jsonwebtoken": "^9.0.2",
-    "mysql2": "^3.6.0",
+    "mysql2": "^3.6.1",
     "nodemon": "^3.0.1",
+    "path": "^0.12.7",
+    "sequelize": "^6.33.0",
     "sharp": "^0.32.6"
   },
   "devDependencies": {
@@ -38,6 +40,7 @@
     "concurrently": "^8.2.0",
     "eslint": "^8.50.0",
     "prettier": "^3.0.3",
+    "sequelize-cli": "^6.6.1",
     "typescript": "^5.1.6"
   }
 }
