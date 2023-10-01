@@ -7,7 +7,10 @@ Find goal in your live and start working!
 ## Pre-requirements
  
 SQL database
- 
+
+## Configuration
+For backend, remove .example from all the files in [api](https://github.com/dalonga-kohi/questio/tree/master/api) dir and modify them acordingly.
+
 ## Run Locally
  
 ```bash
@@ -20,12 +23,11 @@ cd questio
 npm i -D --workspaces
 ```
 ```bash
-mkdir api\dist && mkdir api\dist\uploads
+cd api && npx sequelize-cli db:migrate
 ```
-Load [sql scheme](https://github.com/dalonga-kohi/questio/blob/master/api/questio.sql) to the database
- 
+```bash
+cd ..
+```
 ```bash
 npm run dev
 ```
-## Configuration
-For backend, rename api/.env.example to .env and modify the file acordingly.

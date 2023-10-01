@@ -14,8 +14,9 @@ import {
   getUsers,
 } from '../queries/getQueries'
 import { isAuthorized, parseToInt } from '../utils/utils'
-import { ABS_PATH } from '..'
+import { PATH} from '..'
 import User from '../models/user.model'
+import path, { resolve } from 'path'
 
 router.get('/users', cors(corsOptions), async (req: Request, res: Response) => {
   const page = parseToInt(req.query.page as string)
@@ -182,7 +183,7 @@ router.get(
   cors(corsOptions),
   async (req: Request, res: Response) => {
     try {
-      res.sendFile(ABS_PATH + req.params.id)
+      res.sendFile(path.join(resolve(PATH, req.params.id)))
     } catch (error) {
       res.status(400)
       res.send({ error: error })

@@ -8,7 +8,7 @@ export const connection = mysql
     host: process.env.MYSQL_HOST || '127.0.0.1',
     user: process.env.MYSQL_LOGIN || 'root',
     password: process.env.MYSQL_PASS || '',
-    database: process.env.MYSQL_DB || 'test',
+    database: process.env.MYSQL_DB || 'questio',
   })
   .promise()
 
