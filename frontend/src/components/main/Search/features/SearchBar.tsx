@@ -21,7 +21,6 @@ const SearchBar = ({ handler, value }: IProps) => {
       <div className="pl-3 pr-1 rounded-l-xl py-2.5 border-2 peer-focus:border-green-500 dark:peer-focus:border-accent dark:border-white-light transition-colors border-slate-700 border-r-0 dark:bg-black-light bg-white">
         🔍
       </div>
-
     </div>
   )
 }
