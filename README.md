@@ -16,7 +16,6 @@ For backend, remove .example from all the files in [api](https://github.com/dalo
 ```bash
 git clone git@github.com:dalonga-kohi/questio.git
 ```
- 
 ```bash
 cd questio
 ```
