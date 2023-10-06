@@ -1,45 +1,43 @@
-import {
-  connection,
-  dataTable,
-  friendsTable,
-  questsTable,
-  storageTable,
-  usersTable,
-} from '../database/connection'
-import Account from '../models/account.model'
-import Quest from '../models/quest.model'
-import User from '../models/user.model'
-import Storage from '../models/storage.model'
-import { getUID, parseToInt } from '../utils/utils'
-
-const QUEST_BASE = `SELECT ${questsTable}.*, ${dataTable}.user_name as author_name FROM ${questsTable} INNER JOIN ${dataTable} ON ${questsTable}.author_id=${dataTable}.id`
+import User from '../database/models/user'
+import { Op } from 'sequelize'
+import Quest from '../database/models/quest'
+import StorageLog from '../database/models/storagelog'
+import Friend from '../database/models/friend'
 
 export async function getUsers(page: number, count: number): Promise<User[]> {
   if (page < 1) page = 1
   if (count < 0) count = 1
   const start = (page - 1) * count
-
-  const res = await connection.query<User[]>(
-    `SELECT * FROM ${dataTable} LIMIT ?, ?`,
-    [start, count],
-  )
-  return res[0]
+  try {
+    const res = await User.findAll({
+      offset: start,
+      limit: count,
+      attributes: ['id', 'name', 'avatar']
+    })
+    return res
+  } catch (error) {
+    return []
+  }
 }
 
-export async function getUser(id: number): Promise<User> {
-  const res = await connection.query<User[]>(
-    `SELECT ${dataTable}.*,COUNT(CASE WHEN ${friendsTable}.follower_id=${dataTable}.id THEN 1 END) AS follows,COUNT(CASE WHEN ${friendsTable}.target_id=${dataTable}.id THEN 1 END) AS followers FROM ${dataTable} INNER JOIN ${friendsTable} ON 1=1 WHERE ${dataTable}.id=?`,
-    [id],
-  )
-  return res[0][0]
+export async function getUser(id: number): Promise<User | null> {
+  try {
+    const res = await User.findByPk(id, {
+      attributes: ['id', 'name', 'avatar']
+    })
+    return res?.dataValues
+  } catch (error) {
+    return null
+  }
 }
 
-export async function getAccount(id: number): Promise<Account> {
-  const res = await connection.query<Account[]>(
-    `SELECT ${usersTable}.*, ${dataTable}.user_name, ${dataTable}.avatar, COUNT(CASE WHEN ${friendsTable}.follower_id=${dataTable}.id THEN 1 END) AS follows,COUNT(CASE WHEN ${friendsTable}.target_id=${dataTable}.id THEN 1 END) AS followers FROM ${usersTable} INNER JOIN ${dataTable} ON ${usersTable}.id=${dataTable}.user_id INNER JOIN ${friendsTable} ON 1=1 WHERE ${usersTable}.id=?`,
-    [id],
-  )
-  return res[0][0]
+export async function getAccount(id: number): Promise<User | null> {
+ try {
+  const res = await User.findByPk(id)
+  return res?.dataValues
+ } catch (error) {
+  return null
+ }
 }
 
 export async function getQuests(
@@ -51,104 +49,117 @@ export async function getQuests(
   if (page < 1) page = 1
   if (count < 0) count = 1
   const start = (page - 1) * count
-
-  if (query) {
-    query = `%${query}%`
-    const search = await connection.query<Quest[]>(
-      `${QUEST_BASE} WHERE title LIKE ? OR tags LIKE ? ORDER BY title LIMIT ?, ?`,
-      [query, query, start, count],
-    )
-    return search[0]
+  const params = {
+    offset: start,
+    limit: count
   }
+  try {
+    if (query) {
+      query = `%${query}%`
+      const search = Quest.findAll({
+        ...params,
+        where: {
+          title: {[Op.like]: query}
+        }
+      })
+      return search
+    }
 
-  let res = []
+    let res = []
 
-  switch (category) {
-    case 'popular':
-      res = await connection.query<Quest[]>(`${QUEST_BASE} LIMIT ?, ?`, [
-        start,
-        count,
-      ])
-      return res[0]
-    default:
-      res = await connection.query<Quest[]>(`${QUEST_BASE} LIMIT ?, ?`, [
-        start,
-        count,
-      ])
-      return res[0]
+    switch (category) {
+      case 'popular':
+        res = await Quest.findAll({
+          ...params,
+        })
+        return res
+      default:
+        res = await Quest.findAll(params)
+        return res
+    }
+  } catch (error) {
+    return []
   }
 }
 
-export async function getQuest(id: number): Promise<Quest> {
-  const res = await connection.query<Quest[]>(
-    `SELECT ${questsTable}.*, ${dataTable}.user_name as author_name, COUNT(CASE WHEN ${storageTable}.quest_id=${questsTable}.id THEN 1 END) as enrolled, COUNT(CASE WHEN ${storageTable}.is_done=1 THEN 1 END) as achieved FROM ${questsTable} INNER JOIN ${dataTable} ON ${questsTable}.author_id=${dataTable}.id INNER JOIN ${storageTable} ON ${storageTable}.quest_id=${questsTable}.id WHERE ${questsTable}.id=?`,
-    [id],
-  )
-  return res[0][0]
+export async function getQuest(id: number): Promise<Quest | null> {
+  try {
+    const res = await Quest.findByPk(id)
+    return res?.dataValues
+  } catch (error) {
+    return null
+  }
 }
 
-export async function getStorage(id: number): Promise<Storage[]> {
-  const uid = await getUID(id)
-  if (uid[0] != 200) return []
-  const res = await connection.query<Storage[]>(
-    `
-  SELECT ${storageTable}.is_done,${dataTable}.user_name as author_name , ${storageTable}.image_done, ${questsTable}.* FROM ${storageTable}
-  INNER JOIN ${questsTable} ON ${questsTable}.id=${storageTable}.quest_id
-  INNER JOIN ${dataTable} ON ${questsTable}.author_id = ${dataTable}.id
-  WHERE ${storageTable}.user_id=?`,
-    [uid[1]],
-  )
-  return res[0]
+export async function getStorage(id: number): Promise<StorageLog[]> {
+  try {
+    const res = await StorageLog.findAll({
+      where: {
+        userId: id
+      }
+    })
+    return res
+  } catch (error) {
+    return []
+  }
 }
 
 export async function getFollowers(
   id: number,
   page: number,
   count: number,
-  isSelf: boolean = false,
 ): Promise<User[]> {
   if (page < 1) page = 1
   if (count < 0) count = 1
-  const start_index = (page - 1) * count
-  if (isSelf) {
-    const uid = await getUID(id)
-    if (uid[0] != 200) return []
-    id = parseToInt(uid[1])
-  }
-  const res = await connection.query<User[]>(
-    `SELECT user_name, avatar FROM ${dataTable} WHERE id IN (SELECT follower_id FROM ${friendsTable} WHERE target_id=?) LIMIT ?, ?`,
-    [id, start_index, count],
-  )
+  const start = (page - 1) * count
 
-  return res[0]
+  try {
+    const res = await Friend.findAll({
+      where: {
+        targetId: id
+      },
+      attributes: ['followerId'],
+      offset: start,
+      limit: count
+    })
+    return res
+  } catch (error) {
+    return []
+  }
 }
 
 export async function getFollows(
   id: number,
   page: number,
   count: number,
-  isSelf: boolean = false,
 ): Promise<User[]> {
   if (page < 1) page = 1
   if (count < 0) count = 1
-  const start_index = (page - 1) * count
-  if (isSelf) {
-    const uid = await getUID(id)
-    if (uid[0] != 200) return []
-    id = parseToInt(uid[1])
+  const start = (page - 1) * count
+  try {
+    const res = await Friend.findAll({
+      where: {
+        followerId: id
+      },
+      attributes: ['targetId'],
+      offset: start,
+      limit: count
+    })
+    return res
+  } catch (error) {
+    return []
   }
-  const res = await connection.query<User[]>(
-    `SELECT user_name, avatar FROM ${dataTable} WHERE id IN (SELECT target_id FROM ${friendsTable} WHERE follower_id=?) LIMIT ?, ?`,
-    [id, start_index, count],
-  )
-
-  return res[0]
 }
 
-export async function getUserByName(name: string): Promise<User> {
-  const res = await connection.query<User[]>(
-    `SELECT ${dataTable}.*,COUNT(CASE WHEN ${friendsTable}.follower_id=${dataTable}.id THEN 1 END) AS follows,COUNT(CASE WHEN ${friendsTable}.target_id=${dataTable}.id THEN 1 END) AS followers FROM ${dataTable} INNER JOIN ${friendsTable} ON 1=1 WHERE ${dataTable}.user_name=?`,
-    [name],
-  )
-  return res[0][0]
+export async function getUserByName(name: string): Promise<User | null> {
+  try {
+    const res = await User.findOne({where: {
+      name: name
+      },
+      attributes: ['id', 'name', 'avatar']
+    })
+    return res
+  } catch (error) {
+    return null
+  }
 }

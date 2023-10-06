@@ -31,12 +31,12 @@ router.post(
 
     res.status(row[0])
     if (row[0] == 200) {
-      res.cookie('token', generateToken(`${row[2]}`), {
+      res.cookie('token', generateToken(`${row[1]}`), {
         httpOnly: true,
         maxAge: 10080 * (60 * 1000),
       }) // maxAge: 7 days
-    }
-    res.send({ response: row[1] })
+      res.send({ response: 'logged in' })
+    } else {res.send({response: row[1]})}
   },
 )
 
@@ -68,8 +68,12 @@ router.post(
     const password = req.body.password || ''
     let prefs: string = req.body.preferences || ''
     prefs = prefs.toLowerCase()
+    const emailreg = new RegExp(/^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9.-].{1,255}$/, 'gm')
 
-    const validated = await validateFields(email, username, password, prefs)
+    if(!emailreg.test(email))
+      res.status(400).send('Invalid email')
+
+    const validated = await validateFields(username, password, prefs)
     if (validated[0] != 200) {
       res.status(validated[0])
       res.send({ error: validated[1] })
@@ -116,7 +120,8 @@ router.post(
       return
     }
     const image = req.files.image
-    const { title, description } = req.body
+    const title = req.body.title || ''
+    const description = req.body.description || ''
     let steps: string = req.body.steps || ''
     let tags: string = req.body.tags || ''
     steps = steps.toLowerCase()

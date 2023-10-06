@@ -2,8 +2,6 @@ import jwt from 'jsonwebtoken'
 import { Field, IQuest, Message } from '../data/types'
 import sharp from 'sharp'
 import { PATH } from '..'
-import { connection, dataTable } from '../database/connection'
-import User from '../models/user.model'
 import { UploadedFile } from 'express-fileupload'
 import fs from 'fs'
 import { join, resolve } from 'path'
@@ -23,7 +21,7 @@ export function generateToken(id: string): string {
 }
 
 export const field = [
-  'user_name',
+  'name',
   'avatar',
   'preferences',
   'email',
@@ -34,34 +32,23 @@ export const isField = (x: Field) => field.includes(x)
 
 /* eslint-disable no-useless-escape */
 const fieldRegexs = new Map<string, RegExp>()
-fieldRegexs.set(
-  'email',
-  new RegExp(/^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9.-].{1,255}$/, 'gm'),
-)
-fieldRegexs.set('user_name', new RegExp(/^[a-zA-Z0-9_\-].{5,20}$/))
+fieldRegexs.set('user_name', new RegExp(/^[a-z0-9_\-]+$/))
 fieldRegexs.set('preferences', new RegExp(/^[a-z;].{1,100}$/))
 fieldRegexs.set(
   'password',
-  new RegExp(/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,60}$/),
+  new RegExp(/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/),
 )
 
 export async function validateFields(
-  email: string,
   username: string,
   password: string,
   prefs: string,
 ): Promise<Message> {
-  const emailRegex = fieldRegexs.get('email') || new RegExp('')
   const nameRegex = fieldRegexs.get('user_name') || new RegExp('')
   const passRegex = fieldRegexs.get('password') || new RegExp('')
   const prefRegex = fieldRegexs.get('preferences') || new RegExp('')
-
-  if (!emailRegex.test(email)) {
-    return [400, 'Invalid email']
-  }
-  if (username.length < 5 || username.length > 20) {
-    return [400, 'Username length can only be between 5-20']
-  }
+  if(username.length < 5 || username.length > 20)
+    return [400, 'Username must be between 5 and 20 characters']
   if (!nameRegex.test(username)) {
     return [
       400,
@@ -120,15 +107,6 @@ export async function uploadFile(
   }
 }
 
-export async function getUID(id: number): Promise<Message> {
-  const uid = await connection.query<User[]>(
-    `SELECT id FROM ${dataTable} WHERE user_id=?`,
-    [id],
-  )
-  if (!uid[0][0].id) return [404, 'User not Found']
-  return [200, `${uid[0][0].id}`]
-}
-
 export function remFile(fileName: string | undefined): boolean {
   if (!fileName) return false
   const file = resolve(PATH, fileName)
@@ -150,6 +128,7 @@ export async function validateQuest(quest: IQuest): Promise<Message> {
   const tagsRegex = questRegexs.get('tags') || new RegExp('')
   const stepsRegex = questRegexs.get('steps') || new RegExp('')
 
+  if (!quest.desc) return [400, 'Wrong description format']
   if (!titleRegex.test(quest.title)) return [400, 'Wrong title format']
   if (!tagsRegex.test(quest.tags)) return [400, 'Wrong tags format']
   if (!stepsRegex.test(quest.steps)) return [400, 'Wrong steps format']
