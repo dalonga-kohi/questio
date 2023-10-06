@@ -8,20 +8,9 @@ export type Categories =
   | 'advanced'
   | ''
 
-export type Table =
-  | 'users'
-  | 'users_data'
-  | 'quests'
-  | 'friends'
-  | 'invitations'
-  | 'quests_storage'
-  | ''
-
 export type Field = (typeof field)[string]
 
-export type Message = [number, string]
-
-export type LoginMsg = [number, string, number]
+export type Message = [number, unknown]
 
 export interface IQuest {
   title: string

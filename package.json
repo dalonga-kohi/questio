@@ -15,6 +15,7 @@
   "scripts": {
     "dev": "npx lerna run dev",
     "build": "npx lerna run build",
+    "migrate": "npx lerna run migrate",
     "prepare": "npx husky install"
   },
   "dependencies": {

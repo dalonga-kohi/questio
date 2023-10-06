@@ -14,9 +14,9 @@ import {
   getUsers,
 } from '../queries/getQueries'
 import { isAuthorized, parseToInt } from '../utils/utils'
-import { PATH} from '..'
-import User from '../models/user.model'
+import { PATH } from '..'
 import path, { resolve } from 'path'
+import user from '../database/models/user'
 
 router.get('/users', cors(corsOptions), async (req: Request, res: Response) => {
   const page = parseToInt(req.query.page as string)
@@ -35,17 +35,11 @@ router.get(
   async (req: Request, res: Response) => {
     const id = parseToInt(req.params.id)
     const meth = req.query.method
-    let row: User
+    let row: user | null
     if (meth == 'name' && req.params.id)
       row = await getUserByName(req.params.id)
     else row = await getUser(id)
 
-    if (!row.id) {
-      res.send({
-        response: [],
-      })
-      return
-    }
     res.send({
       response: row,
     })
@@ -64,10 +58,6 @@ router.get(
       return
     }
     const row = await getAccount(id)
-    if (!row.id) {
-      res.status(404)
-      res.send({ error: 'User not found' })
-    }
     res.send({
       response: row,
     })
@@ -149,7 +139,7 @@ router.get(
       res.send({ error: authorized[1] })
       return
     }
-    const rows = await getFollows(id, page, count, true)
+    const rows = await getFollows(id, page, count)
 
     res.send({
       response: rows,
@@ -170,7 +160,7 @@ router.get(
       res.send({ error: authorized[1] })
       return
     }
-    const rows = await getFollowers(id, page, count, true)
+    const rows = await getFollowers(id, page, count)
 
     res.send({
       response: rows,
