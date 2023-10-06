@@ -47,7 +47,7 @@ export async function validateFields(
   const nameRegex = fieldRegexs.get('user_name') || new RegExp('')
   const passRegex = fieldRegexs.get('password') || new RegExp('')
   const prefRegex = fieldRegexs.get('preferences') || new RegExp('')
-  if(username.length < 5 || username.length > 20)
+  if (username.length < 5 || username.length > 20)
     return [400, 'Username must be between 5 and 20 characters']
   if (!nameRegex.test(username)) {
     return [

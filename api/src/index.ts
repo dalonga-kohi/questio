@@ -30,13 +30,13 @@ import corsOptions from './data/cors'
 
 checkDB()
 
-if(!fs.existsSync(join(PATH))) {
-    fs.mkdirSync(PATH)
-    console.log('Created new directory: ', PATH)
+if (!fs.existsSync(join(PATH))) {
+  fs.mkdirSync(PATH)
+  console.log('Created new directory: ', PATH)
 }
 
 const PORT = process.env.PORT || 8080
 app.listen(PORT, () => {
-    console.log(`Listening on http://localhost:${PORT}`)
-    console.log(`Client address is: ${corsOptions.origin}`)
+  console.log(`Listening on http://localhost:${PORT}`)
+  console.log(`Client address is: ${corsOptions.origin}`)
 })

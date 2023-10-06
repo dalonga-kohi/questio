@@ -12,7 +12,7 @@ export async function getUsers(page: number, count: number): Promise<User[]> {
     const res = await User.findAll({
       offset: start,
       limit: count,
-      attributes: ['id', 'name', 'avatar']
+      attributes: ['id', 'name', 'avatar'],
     })
     return res
   } catch (error) {
@@ -23,7 +23,7 @@ export async function getUsers(page: number, count: number): Promise<User[]> {
 export async function getUser(id: number): Promise<User | null> {
   try {
     const res = await User.findByPk(id, {
-      attributes: ['id', 'name', 'avatar']
+      attributes: ['id', 'name', 'avatar'],
     })
     return res?.dataValues
   } catch (error) {
@@ -32,12 +32,12 @@ export async function getUser(id: number): Promise<User | null> {
 }
 
 export async function getAccount(id: number): Promise<User | null> {
- try {
-  const res = await User.findByPk(id)
-  return res?.dataValues
- } catch (error) {
-  return null
- }
+  try {
+    const res = await User.findByPk(id)
+    return res?.dataValues
+  } catch (error) {
+    return null
+  }
 }
 
 export async function getQuests(
@@ -51,7 +51,7 @@ export async function getQuests(
   const start = (page - 1) * count
   const params = {
     offset: start,
-    limit: count
+    limit: count,
   }
   try {
     if (query) {
@@ -59,8 +59,8 @@ export async function getQuests(
       const search = Quest.findAll({
         ...params,
         where: {
-          title: {[Op.like]: query}
-        }
+          title: { [Op.like]: query },
+        },
       })
       return search
     }
@@ -95,8 +95,8 @@ export async function getStorage(id: number): Promise<StorageLog[]> {
   try {
     const res = await StorageLog.findAll({
       where: {
-        userId: id
-      }
+        userId: id,
+      },
     })
     return res
   } catch (error) {
@@ -116,11 +116,11 @@ export async function getFollowers(
   try {
     const res = await Friend.findAll({
       where: {
-        targetId: id
+        targetId: id,
       },
       attributes: ['followerId'],
       offset: start,
-      limit: count
+      limit: count,
     })
     return res
   } catch (error) {
@@ -139,11 +139,11 @@ export async function getFollows(
   try {
     const res = await Friend.findAll({
       where: {
-        followerId: id
+        followerId: id,
       },
       attributes: ['targetId'],
       offset: start,
-      limit: count
+      limit: count,
     })
     return res
   } catch (error) {
@@ -153,10 +153,11 @@ export async function getFollows(
 
 export async function getUserByName(name: string): Promise<User | null> {
   try {
-    const res = await User.findOne({where: {
-      name: name
+    const res = await User.findOne({
+      where: {
+        name: name,
       },
-      attributes: ['id', 'name', 'avatar']
+      attributes: ['id', 'name', 'avatar'],
     })
     return res
   } catch (error) {

@@ -1,4 +1,3 @@
-import { ResultSetHeader } from 'mysql2'
 import { Field, Message } from '../data/types'
 import hash from 'bcrypt'
 import { remFile } from '../utils/utils'
@@ -9,21 +8,26 @@ export async function patchAccount(
   field: Field,
   data: string,
 ): Promise<Message> {
-  if(field == 'password') data = await hash.hash(data, 8)
+  if (field == 'password') data = await hash.hash(data, 8)
 
   try {
-    if(field == 'email' && field == 'name') {
+    if (field == 'email' && field == 'name') {
       const exists = await User.findOne({
         where: {
-          [field]: data
-        }
+          [field]: data,
+        },
       })
-      if(exists) return [400, `${field} already taken`]
+      if (exists) return [400, `${field} already taken`]
     }
 
-    await User.update({[field]: data}, {where: {
-      id: id
-    }})
+    await User.update(
+      { [field]: data },
+      {
+        where: {
+          id: id,
+        },
+      },
+    )
   } catch (error) {
     return [500, 'Internal Error']
   }
@@ -37,14 +41,17 @@ export async function patchAvatar(
   if (!path) return [400, 'File not found']
   try {
     const user = await User.findByPk(id)
-    if(!user) return [404, 'User not found']
+    if (!user) return [404, 'User not found']
 
     const img = user.getDataValue('avatar').split('/api/v1/img/')[1]
     remFile(img)
 
-    await User.update({avatar: path}, {
-      where: {id: id}
-    })
+    await User.update(
+      { avatar: path },
+      {
+        where: { id: id },
+      },
+    )
   } catch (error) {
     return [500, 'Internal error']
   }

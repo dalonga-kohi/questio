@@ -14,7 +14,7 @@ import {
   getUsers,
 } from '../queries/getQueries'
 import { isAuthorized, parseToInt } from '../utils/utils'
-import { PATH} from '..'
+import { PATH } from '..'
 import path, { resolve } from 'path'
 import user from '../database/models/user'
 

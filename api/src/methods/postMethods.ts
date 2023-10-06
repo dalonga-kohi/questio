@@ -36,7 +36,9 @@ router.post(
         maxAge: 10080 * (60 * 1000),
       }) // maxAge: 7 days
       res.send({ response: 'logged in' })
-    } else {res.send({response: row[1]})}
+    } else {
+      res.send({ response: row[1] })
+    }
   },
 )
 
@@ -68,10 +70,13 @@ router.post(
     const password = req.body.password || ''
     let prefs: string = req.body.preferences || ''
     prefs = prefs.toLowerCase()
-    const emailreg = new RegExp(/^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9.-].{1,255}$/, 'gm')
+    /* eslint-disable no-useless-escape */
+    const emailreg = new RegExp(
+      /^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9.-].{1,255}$/,
+      'gm',
+    )
 
-    if(!emailreg.test(email))
-      res.status(400).send('Invalid email')
+    if (!emailreg.test(email)) res.status(400).send('Invalid email')
 
     const validated = await validateFields(username, password, prefs)
     if (validated[0] != 200) {

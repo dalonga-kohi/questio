@@ -11,14 +11,14 @@ export async function login(mail: string, pass: string): Promise<Message> {
     const res = await User.findOne({
       where: {
         email: mail,
-      }
+      },
     })
 
     const id = res?.getDataValue('id')
-    if(!id) return [404, 'Email not found']
+    if (!id) return [404, 'Email not found']
 
     const isPass = await hash.compare(pass, res?.getDataValue('password'))
-    if(!isPass) return [404, 'Email and password does not match']
+    if (!isPass) return [404, 'Email and password does not match']
 
     return [200, id]
   } catch (error) {
@@ -34,21 +34,21 @@ export async function register(
 ): Promise<Message> {
   try {
     const hashed = await hash.hash(pass, 8)
-    const [_, created] = await User.findOrCreate({
+    const [, created] = await User.findOrCreate({
       where: {
         [Op.or]: {
           email: email,
-          name: name
-        }
+          name: name,
+        },
       },
       defaults: {
         email: email,
         password: hashed,
         name: name,
-        preferences: prefs
-      }
+        preferences: prefs,
+      },
     })
-    if(!created) return [400, 'User already exists']
+    if (!created) return [400, 'User already exists']
   } catch (error) {
     return [500, 'Internal error']
   }
@@ -57,16 +57,17 @@ export async function register(
 
 export async function addStorage(id: number, qid: number): Promise<Message> {
   try {
-    const [_, created] = await StorageLog.findOrCreate({
+    const [, created] = await StorageLog.findOrCreate({
       where: {
         ownerId: id,
-        questId: qid
-      },defaults: {
+        questId: qid,
+      },
+      defaults: {
         ownerId: id,
-        questId: qid
-      }
+        questId: qid,
+      },
     })
-    if(!created) return [400, 'Quest already in storage']
+    if (!created) return [400, 'Quest already in storage']
   } catch (error) {
     return [500, 'Internal error']
   }
@@ -76,16 +77,17 @@ export async function addStorage(id: number, qid: number): Promise<Message> {
 
 export async function addFollow(id: number, tid: number): Promise<Message> {
   try {
-    const [_, created] = await Friend.findOrCreate({
+    const [, created] = await Friend.findOrCreate({
       where: {
         followerId: id,
-        targetId: tid
-      },defaults: {
+        targetId: tid,
+      },
+      defaults: {
         followerId: id,
-        targetId: tid
-      }
+        targetId: tid,
+      },
     })
-    if(!created) return [400, 'Already followed']
+    if (!created) return [400, 'Already followed']
   } catch (error) {
     return [500, 'Unable to follow']
   }
@@ -100,20 +102,21 @@ export async function addQuest(
   if (!path) return [404, 'File not found']
 
   try {
-    const [_, created] = await Quest.findOrCreate({
+    const [, created] = await Quest.findOrCreate({
       where: {
         authorId: id,
-        title: data.title
-      },defaults: {
+        title: data.title,
+      },
+      defaults: {
         authorId: id,
         title: data.title,
         description: data.desc,
         image: path,
         steps: data.steps,
-        tags: data.tags
-      }
+        tags: data.tags,
+      },
     })
-    if(!created) return [400, 'Quest already exists']
+    if (!created) return [400, 'Quest already exists']
   } catch (_) {
     return [500, 'Internal error']
   }
